@@ -104,11 +104,9 @@ input,button{
 	right: 0;
 	bottom: 0;
 	left: 0;
-    /* background-image: url(https://img.cncn3.cn/timg/); */
 	background-position: center;
     background-size: 100%;
 	background-size: cover;
-    transition: all 0.5s;
 }
 #bodybg.hidden{
     opacity: 0;
@@ -131,7 +129,7 @@ input,button{
 }
 #msgBoxCover{
     position: fixed;
-	z-index: 8888;
+	z-index: 88888;
 	top: 0;
 	right: 0;
 	bottom: 0;
@@ -378,6 +376,7 @@ body:not(.dark)[halfDark=true] #header logotext#headerlogotexth, body:not(.dark)
 .delete{
     color: red;
 }
+
 #weaContainer{
     position: absolute;
     z-index: 9999;
@@ -543,7 +542,16 @@ body:not(.dark)[halfDark=true] #header logotext#headerlogotexth, body:not(.dark)
 .fastMenu{
     position: fixed;
     width: 230px;
+    height: 160px;
     transform: none;
+    z-index: 66668;
+}
+@media (max-width: 700px) {
+    .fastMenu{
+        top: 50%!important;
+        left: 50%!important;
+        transform: translate(-50%,0%)!important;
+    }
 }
 .fastMenu input{
     outline: none;

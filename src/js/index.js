@@ -11,10 +11,11 @@ if (localStorage.getItem("started") == null) {
     setSearch();
     localStorage.setItem("quickAccess", "true");
     setQuickAccess();
+    localStorage.setItem("bgImage", "bing");
+    localStorage.setItem("imgZdyLink", "");
+    setBgImg();
     localStorage.setItem("bg", "true");
     setBg();
-    localStorage.setItem("bgImage", "bing");
-    setBgImg();
     localStorage.setItem("shide", "true");
     setSh();
     localStorage.setItem("searchE", "baidu");
@@ -384,23 +385,6 @@ function setTime() {
     }
     console.log("Set time to " + toSet);
 }
-setBg();
-function setBg() {
-    resetButton("bgImageC");
-    toSet = localStorage.getItem("bg");
-    if (toSet == "true") {
-        bgOpenB.className = "on";
-        bodybg.className = "";
-        document.getElementsByTagName("body")[0].setAttribute("halfDark", "false");
-    }
-    if (toSet == "false") {
-        bgCloseB.className = "on";
-        bodybg.className = "hidden";
-        document.getElementsByTagName("body")[0].setAttribute("halfDark", "true");
-    }
-    console.log("Set background photo to " + toSet);
-    setBgImg();
-}
 setBgImg();
 function setBgImg(openBox = false) {
     resetButton("bgImageOriC");
@@ -439,6 +423,23 @@ imgSelect.onclick = function () {
         console.error("没有提供图片地址");
         alert("Please fill the blank.");
     }
+}
+setBg();
+function setBg() {
+    resetButton("bgImageC");
+    toSet = localStorage.getItem("bg");
+    if (toSet == "true") {
+        bgOpenB.className = "on";
+        bodybg.className = "";
+        document.getElementsByTagName("body")[0].setAttribute("halfDark", "false");
+    }
+    if (toSet == "false") {
+        bgCloseB.className = "on";
+        bodybg.className = "hidden";
+        document.getElementsByTagName("body")[0].setAttribute("halfDark", "true");
+    }
+    setBgImg();
+    console.log("Set background photo to " + toSet);
 }
 setWea();
 function setWea() {
