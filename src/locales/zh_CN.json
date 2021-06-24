@@ -1,0 +1,54 @@
+{
+	"aboutBox": {
+		"h1": "关于 nmBrowser 启动页"
+	},
+	"cancel": "取消",
+	"close": "关闭",
+	"confirm": "确认",
+	"daochu": "导出",
+	"daoru": "导入",
+	"developing": "此功能还在开发中，敬请期待。",
+	"imgPicker": {
+		"h1": "自定义照片",
+		"p": "输入图片地址："
+	},
+	"linkEdit": {
+		"h1": "编辑快速链接",
+		"tip": "最多可以插入 8 条常用链接。"
+	},
+	"map": "导航",
+	"menu": {
+		"2ciyuan": "二次元",
+		"LTB": "左上角",
+		"RTB": "右上角",
+		"about": "关于",
+		"baidu": "百度",
+		"bgImage": "背景图片",
+		"bgImageOri": "图片源",
+		"bing": "必应",
+		"bingImage": "必应",
+		"close": "关",
+		"colorAuto": "跟随系统",
+		"colorDark": "暗",
+		"colorImg": "识别图片",
+		"colorLight": "亮",
+		"colorTheme": "主题",
+		"google": "谷歌",
+		"lan": "语言",
+		"mamage": "管理",
+		"news": "新闻与资讯",
+		"open": "开",
+		"quickAccess": "快速链接",
+		"searchBox": "搜索框",
+		"searchE": "搜索引擎",
+		"selfImg": "自定义",
+		"shide": "搜索时模糊背景",
+		"siteMap": "导航",
+		"time": "以时间取代标题",
+		"wea": "天气"
+	},
+	"news": "新闻",
+	"not_available_region": "抱歉，此服务在您所在的国家或地区无法使用。",
+	"start": "开始",
+	"title": "主页"
+}
