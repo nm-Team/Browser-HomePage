@@ -1,4 +1,15 @@
-:root{
+*{
+    margin: 0;
+    padding: 0;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    /* transition: background-color 0.8s; */
+    font-family: PingFangSC-Regular;
+}
+body{
+    background-color: var(--page-bgcolor);
+    z-index: -9998;
     --loading-cover: #ffffff;
     --page-bgcolor: #dddddd;
     --loading-spinner: #EAD050;
@@ -19,18 +30,36 @@
     --time: #ffffff;
     --wea: #ffffff;
 }
-*{
-    margin: 0;
-    padding: 0;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-    /* transition: background-color 0.8s; */
-    font-family: PingFangSC-Regular;
+body.dark{
+    --loading-cover: #353535;
+    --page-bgcolor: #353535;
+    --loading-spinner: #EAD050;
+    --scroller-grey:#585858c9;
+    --buttongrey: #f5f5f5;
+    --jianbiancolor: rgba(0, 0, 0, 0.459);
+    --jianbianword: saturate(220%) blur(15px);
+    --cardjianbiancolor: rgba(0, 0, 0, 0.63);
+    --cardjianbianword: saturate(220%) blur(25px);
+    --cardtext: #f8f8f8;
+    --hovercolor: rgba(90, 90, 90, 0.3);
+    --linkcolor: #b6b6b6;
+    --mylove-text: #ffffff;
+    --menu-text: #fafafa;
+    /* --cover-jb: linear-gradient(180deg, rgba(0,0,0,0.1)0%, rgba(0,0,0,0.0)40%, rgba(0,0,0,0.0)76%, rgba(0,0,0,0.25)); */
+    --searchword: #ffffff;
+    --input: #ffffff;
 }
-body{
-    background-color: var(--page-bgcolor);
-    z-index: -9998;
+body:not(.dark)[halfDark=true], body[firstTime=true]{
+    --time: #000000;
+    --wea: #000000;
+    --mylove-text: #000000;
+    --buttongrey: #000000;
+}
+body.dark #header logotext{
+    filter: invert(1);
+}
+body.dark #header logotext#headerlogotext[time=true], body.halfDark #header logotext, body[firstTime=true] #header logotext{
+    filter: none;
 }
 input,button{
     color: var(--input);
@@ -89,7 +118,7 @@ input,button{
     transform: scale(1.02);
 }
 #bodybg.hidden+#bodyCover{
-    /* opacity: 0; */
+    opacity: 0;
 }
 #bodyCover{
     position: fixed;
@@ -137,6 +166,9 @@ input,button{
     height: 150px;
     z-index: 1;
     /* overflow: hidden; */
+}
+#header[firstTime=true]{
+    z-index: 9999999999999999999999999999999999999999999;
 }
 #leftTime{
     position: absolute;
@@ -193,9 +225,12 @@ input,button{
     padding: 20px;
     color: rgba(126, 89, 89, 0);
 }
-#header logotext#headerlogotext[time=true]{
+body #header logotext#headerlogotext[time=true]{
     color: var(--time);
     background: none;
+    filter: none;
+}
+body:not(.dark)[halfDark=true] #header logotext#headerlogotexth, body:not(.dark)[halfDark=true] #header logotext#headerlogotext{
     filter: none;
 }
 #header logotext#headerlogotexth{
@@ -212,7 +247,7 @@ input,button{
     background-position-x: calc(50% + 20px);
     background-size: auto 60px;
     bottom: -5%;
-    transition: all 0.6s,opacity 0s ;
+    transition: all 0.6s,opacity 0s;
 }
 #header button{
     position: absolute;
@@ -248,7 +283,7 @@ input,button{
     backdrop-filter: var(--jianbianword);
     -webkit-backdrop-filter: var(--jianbianword);
     border-radius: 9px;
-    box-shadow: rgba(27, 27, 27, 0.6) 4px 4px 16px;
+    box-shadow: rgb(27 27 27 / 30%) 4px 4px 12px;
     padding: 6px 0;
     color: var(--menu-text);
     visibility: hidden;
@@ -273,6 +308,8 @@ input,button{
     top: 197px;
     bottom: 75px;
     left: 50%;
+    width: 340px;
+    max-width: 100%;
     height: auto;
     z-index: 999999999999999;
     visibility: visible;
@@ -429,12 +466,21 @@ input,button{
 #searchButton:hover svg{
     opacity: 0.7;
 }
+
 #lover{
     width: 100%;
     max-width: 940px;
     height: 200px;
     padding: calc(50vh - 130px) 0 80px 0;
     margin: auto auto;
+}
+@media (max-height: 660px) {
+    #searchBox{
+        margin-top: 22px;
+    }
+    #lover{
+        padding-top: calc(80vh - 340px);
+    }
 }
 #myLoves{
     display: flex;
@@ -723,4 +769,26 @@ input,button{
     100%{
         opacity: 1;
     }
+}
+/* 动画部分 */
+body[transition=true], body[transition=true] .card{
+    transition: background-color 0.5s;
+}
+body[transition=true] #headerlogotext[time=true], body[transition=true] #headerlogotext{
+    transition: background-image 0s 0.5s, color 0.5s, filter 0.5s;
+}
+body[transition=true] #header button{
+    transition: fill 0.5s;
+}
+body[transition=true] #searchBox{
+    transition: all 0.5s;
+}
+body[transition=true] .clickMenu[open=true]{
+    transition: color 0.5s, background-color 0.5s, transform 0.4s cubic-bezier(0.4, 0.99, 0.4, 1.08),opacity 0.2s 0.05s;
+}
+body[transition=true] #headerClickMenu div .value button,body[transition=true] .sw-bar-bubble-location,body[transition=true] .sw-bar-bubble-temperature,body[transition=true] .myLove p{
+    transition: color 0.5s;
+}
+body[transition=true] #myLoves{
+    transition: all 0.2s;
 }

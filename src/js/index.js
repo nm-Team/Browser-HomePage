@@ -1,7 +1,9 @@
 // 初始设置
 if (localStorage.getItem("started") == null) {
+    document.getElementsByTagName("body")[0].setAttribute("firstTime", "true");
     loadingCover.setAttribute("hidden", "false");
     headerClickMenu.setAttribute("firstTime", "true");
+    header.setAttribute("firstTime", "true");
     // 默认选项
     localStorage.setItem("theme", "auto");
     setTheme();
@@ -32,14 +34,10 @@ startUsing.onclick = function () {
     localStorage.setItem("started", "true");
     loadingCover.setAttribute("hidden", "true");
     headerClickMenu.setAttribute("firstTime", "false");
+    header.setAttribute("firstTime", "false");
+    document.getElementsByTagName("body")[0].setAttribute("firstTime", "false");
+
 }
-// allElements=document.getElementsByTagName("*");
-// for(startTrans=0;startTrans<allElements.length;startTrans++){
-//     if(!allElements[startTrans].style.transition)
-//     needsa=",";
-//     else needsa="";
-//     allElements[startTrans].style.transition+=needsa+"background-color 10.8s"
-// }
 
 // Header 动画
 maindiv.onscroll = function () {
@@ -106,7 +104,10 @@ function openHeaderMenu() {
     headerClickMenu = document.getElementById("headerClickMenu");
     if (headerClickMenu.getAttribute("open") == "true") {
         headerClickMenu.setAttribute("open", "false");
-    } else headerClickMenu.setAttribute("open", "true");
+    } else {
+        headerClickMenu.setAttribute("open", "true");
+        noSuchCover.className = "opened";
+    }
 }
 
 // 设置
@@ -251,13 +252,14 @@ function setTheme() {
         else toSet = "light";
     }
     console.log("Set theme to " + toSet);
-    new_element = document.createElement('link');
-    new_element.setAttribute('rel', 'stylesheet');
+    // new_element = document.createElement('link');
+    // new_element.setAttribute('rel', 'stylesheet');
     if (toSet == "dark")
-        new_element.setAttribute('href', '/src/css/dark.css');
-    else new_element.setAttribute('href', '/src/css/common.css');
-    document.body.appendChild(new_element);
-
+        // new_element.setAttribute('href', '/src/css/dark.css');
+        // else new_element.setAttribute('href', '/src/css/common.css');
+        // document.body.appendChild(new_element);
+        document.getElementsByTagName("body")[0].className = "dark";
+    else document.getElementsByTagName("body")[0].className = "";
 }
 setSearch();
 function setSearch() {
@@ -389,12 +391,15 @@ function setBg() {
     if (toSet == "true") {
         bgOpenB.className = "on";
         bodybg.className = "";
+        document.getElementsByTagName("body")[0].setAttribute("halfDark", "false");
     }
     if (toSet == "false") {
         bgCloseB.className = "on";
         bodybg.className = "hidden";
+        document.getElementsByTagName("body")[0].setAttribute("halfDark", "true");
     }
     console.log("Set background photo to " + toSet);
+    setBgImg();
 }
 setBgImg();
 function setBgImg(openBox = false) {
@@ -420,7 +425,8 @@ function setBgImg(openBox = false) {
             urlInput.value = imgOri;
         }
     }
-    bodybg.style.backgroundImage = "url(" + imgOri + ")";
+    if (localStorage.getItem("bg") == "true")
+        bodybg.style.backgroundImage = "url(" + imgOri + ")";
     console.log("Set background photo URL to " + toSet);
 }
 imgSelect.onclick = function () {
@@ -450,7 +456,7 @@ function setWea() {
         weaContainer.className = "hidden";
     }
     console.log("Set weather to " + toSet);
-    if(toSet!="false"){
+    if (toSet != "false") {
         (function (a, h, g, f, e, d, c, b) { b = function () { d = h.createElement(g); c = h.getElementsByTagName(g)[0]; d.src = e; d.charset = "utf-8"; d.async = 1; c.parentNode.insertBefore(d, c) }; a["SeniverseWeatherWidgetObject"] = f; a[f] || (a[f] = function () { (a[f].q = a[f].q || []).push(arguments) }); a[f].l = +new Date(); if (a.attachEvent) { a.attachEvent("onload", b) } else { a.addEventListener("load", b, false) } }(window, document, "script", "SeniverseWeatherWidget", "//cdn.sencdn.com/widget2/static/js/bundle.js?t=" + parseInt((new Date().getTime() / 100000000).toString(), 10)));
         window.SeniverseWeatherWidget('show', {
             flavor: "bubble",
@@ -611,8 +617,9 @@ function hideMenu(nosave = false) {
         editingLink.img = document.getElementsByClassName("fastMenu")[0].getElementsByTagName("input")[2].value;
         localStorage.setItem("fastLinks", JSON.stringify(links));
     }
-    document.getElementsByClassName("fastMenu")[0].outerHTML = "";
+    headerClickMenu.setAttribute("open", "false");
     noSuchCover.className = "";
+    document.getElementsByClassName("fastMenu")[0].outerHTML = "";
     setQuickAccess();
 }
 noSuchCover.onclick = function () {
@@ -663,3 +670,9 @@ window.onmousemove = function (event) {
     mouseX = event.screenX;
     mouseY = event.screenY;
 };
+window.onload = function () {
+    setTimeout(() => {
+        document.getElementsByTagName("body")[0].setAttribute("transition", "true");
+    }, 2000);
+
+}
