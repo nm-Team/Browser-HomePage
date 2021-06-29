@@ -705,7 +705,7 @@ window.onmousemove = function (event) {
 // 登录账户
 window.onload = function () {
     accountInfo = getInfo();
-    accountBox.setAttribute("onclick", "window.location.href=`" + logURL + "?name=<t data-i18n='target.browser_home_page'></t>&returnto=" + window.location.href + "&msg=<t data-i18n='msg.browser_home_page'></t>`");
+    accountBox.setAttribute("onclick", "window.location.href=`" + logURL + "?name=target.browser_home_page&returnto=" + window.location.href + "&msg=msg.browser_home_page`");
     if (accountInfo == -1) {
         nickBox.innerHTML = "<span data-i18n='account.click_to_log'></span>";
     }
