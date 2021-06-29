@@ -44,6 +44,11 @@
 
 	</div>
 	<div class="clickMenu" id="headerClickMenu">
+		<div id="accountBox">
+			<i id="avatarBox"></i>
+			<p id="nickBox">—</p>
+		</div>
+		<div data-i18n="menu.synchronize" id="synchronizeB"></div>
 		<div id="themeC"><span data-i18n="menu.colorTheme"></span>
 			<div class="value">
 				<button data-i18n="menu.colorLight" id="lightThemeB"></button><button data-i18n="menu.colorDark"
@@ -55,6 +60,12 @@
 			<div class="value">
 				<button data-i18n="menu.open" id="searchB"></button><button data-i18n="menu.close"
 					id="noSearchB"></button>
+			</div>
+		</div>
+		<div id="searchHC"><span data-i18n="menu.searchH"></span>
+			<div class="value">
+				<button data-i18n="menu.open" id="searchHB"></button><button data-i18n="menu.bSearchH"
+					id="bSearchHB"></button><button data-i18n="menu.close" id="noSearchHB"></button>
 			</div>
 		</div>
 		<div id="searchEC"><span data-i18n="menu.searchE"></span>
@@ -132,10 +143,10 @@
 		<div id="searcher">
 			<div class="searchBox" id="searchBox">
 				<form action="javascript:search();">
-					<input id="searchInput" placeholder="Search" tabindex="0" autofocus>
-					<button class="searchButton" id="searchButton" onclick="search();"><svg t="1624278681807"
-							class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"
-							p-id="1226" width="700" height="700">
+					<input id="searchInput" placeholder="Search" tabindex="0" autofocus autocomplete="off">
+					<button class="searchButton" id="searchButton" onclick="search();" onchange="searchHelp();"><svg
+							t="1624278681807" class="icon" viewBox="0 0 1024 1024" version="1.1"
+							xmlns="http://www.w3.org/2000/svg" p-id="1226" width="700" height="700">
 							<path
 								d="M400.696889 801.393778A400.668444 400.668444 0 1 1 400.696889 0a400.668444 400.668444 0 0 1 0 801.393778z m0-89.031111a311.637333 311.637333 0 1 0 0-623.331556 311.637333 311.637333 0 0 0 0 623.331556z"
 								p-id="1227"></path>
@@ -143,7 +154,13 @@
 								p-id="1228"></path>
 						</svg></button>
 				</form>
+				<!-- <div id="searchHelper"> -->
+				<!-- <div>nmB<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M519.02036023 459.47959989L221.8941505 162.35411435a37.07885742 37.07885742 0 1 0-52.45354772 52.40502656l297.12476134 297.15010821L169.44060278 809.05863314a37.07885742 37.07885742 0 1 0 52.42964924 52.42892505l297.15010821-297.12476136 297.15010822 297.12476136a37.07885742 37.07885742 0 1 0 52.42892504-52.40430237l-297.12476135-297.1740067 297.12476135-297.12548553a37.07885742 37.07885742 0 1 0-52.42892504-52.42964924L519.04498291 459.47959989z"></path></svg></div>
+					<div>nmB</div>
+					<div>nmB</div> -->
+				<!-- </div> -->
 			</div>
+
 		</div>
 		<div id="lover">
 			<div id="myLoves"></div>
@@ -209,6 +226,17 @@
 			<button data-i18n="confirm" id="saveLinks"></button> <button data-i18n="cancel" id="cancelLinks"></button>
 		</div>
 	</div>
+	<div id="synchronizeBox" class="msgBox">
+		<h1 data-i18n="synchronize.h1"></h1>
+		<div class="main">
+			<p data-i18n="synchronize.nomore"></p>
+			<p><center data-i18n="synchronize.tip"></center></p>
+			<!-- <div class="synchronizeList"><p data-i18n="synchronize.fastLinks"></p><div><button data-i18n="menu.open" id="synchronizeFastLinksOpen"></button><button data-i18n="menu.close" id="synchronizeFastLinksClose"></button><button data-i18n="menu.clear" id="synchronizeFastLinksClear"></button></div></div>			 -->
+		</div>
+		<div class="buttonCon">
+			<button data-i18n="confirm" id="closeSynchronizeBox"></button>
+		</div>
+	</div>
 	<div id="aboutBox" class="msgBox">
 		<h1 data-i18n="aboutBox.h1"></h1>
 		<div class="main">
@@ -216,6 +244,8 @@
 			<p>nmBrowser HomePage</p>
 			<p>©2021 nmTeam. All rights reserved. </p>
 			<p><a href="//nmteam.ml?from=nmb_homepage">nmTeam Website</a></p>
+			<p><small>Thanks to the bing photo api api.mfstudio.cc, the quadratic element photo api api.ixiaowai.cn, the
+					weather api by the Xingzhi Weather and i18next for their contributions.</small></p>
 		</div>
 		<div class="buttonCon">
 			<button data-i18n="close" id="aboutClose"></button>
@@ -225,9 +255,10 @@
 		id="copyTextBox" readonly=""></textarea>
 
 </body>
-<script src="/src/js/index.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/i18next/1.6.3/i18next-1.6.3.min.js"></script>
+<script src="http://localhost:2338/src/js/getinfo.js"></script>
+<script src="/src/js/index.js"></script>
 <script src="/src/js/language.js"></script>
 <!-- <script type="text/javascript" src="https://www.wjx.cn/js/ap.js?activity=h4gyg7Y" id="wjxFloatBtnJsCode"></script> -->
 

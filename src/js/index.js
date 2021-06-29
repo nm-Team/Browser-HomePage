@@ -1,3 +1,5 @@
+logURL = "";
+apiURL = "";
 // 初始设置
 if (localStorage.getItem("started") == null) {
     document.getElementsByTagName("body")[0].setAttribute("firstTime", "true");
@@ -134,6 +136,18 @@ searchB.onclick = function () {
 noSearchB.onclick = function () {
     localStorage.setItem("search", "false");
     setSearch();
+}
+searchHB.onclick = function () {
+    localStorage.setItem("searchH", "true");
+    setsearchH();
+}
+bSearchHB.onclick = function () {
+    localStorage.setItem("searchH", "url");
+    setsearchH();
+}
+noSearchHB.onclick = function () {
+    localStorage.setItem("searchH", "false");
+    setsearchH();
 }
 linkOpenB.onclick = function () {
     localStorage.setItem("quickAccess", "true");
@@ -276,6 +290,21 @@ function setSearch() {
         searchBox.className = "closed";
     }
     console.log("Set search to " + toSet);
+}
+setsearchH();
+function setsearchH() {
+    resetButton("searchHC");
+    toSet = localStorage.getItem("searchH");
+    if (toSet == "true") {
+        searchHB.className = "on";
+    }
+    if (toSet == "false") {
+        noSearchHB.className = "on";
+    }
+    if (toSet == "url") {
+        bSearchHB.className = "on";
+    }
+    console.log("Set searchH to " + toSet);
 }
 setSh();
 function setSh() {
@@ -533,7 +562,13 @@ outLinks.onclick = function () {
 }
 inLinks.onclick = function () {
     inLinksStr = prompt("Paste the item to import: ", "");
-    localStorage.setItem("fastLinks", inLinksStr);
+    try {
+        JSON.parse(inLinksStr);
+        localStorage.setItem("fastLinks", inLinksStr);
+    }
+    catch (err) {
+        alert("The JSON has been destroyed. <br />Detail: " + err);
+    }
     linkManageB.click();
 }
 saveLinks.onclick = function () {
@@ -671,9 +706,79 @@ window.onmousemove = function (event) {
     mouseX = event.screenX;
     mouseY = event.screenY;
 };
+
+// 登录账户
 window.onload = function () {
-    setTimeout(() => {
+    accountInfo = getInfo();
+    accountBox.setAttribute("onclick", "window.location.href=`" + logURL + "?name=<t data-i18n='target.browser_home_page'></t>&returnto=" + window.location.href + "&msg=<t data-i18n='msg.browser_home_page'></t>`");
+    if (accountInfo == -1) {
+        nickBox.innerHTML = "<span data-i18n='account.click_to_log'></span>";
+    }
+    else if (accountInfo == -2) {
+        nickBox.innerHTML = "<span data-i18n='account.unable_to_load'></span>";
+    }
+    else {
+        avatarBox.style.backgroundImage = "url(" + accountInfo['avatar'] + ")";
+        nickBox.innerHTML = accountInfo['nick'];
+        accountBox.setAttribute("onclick", "window.open(`" + logURL + "/info.html`)");
+    }
+    changeLanguage();
+        setTimeout(() => {
         document.getElementsByTagName("body")[0].setAttribute("transition", "true");
     }, 2000);
+}
 
+synchronizeB.onclick = function () {
+    synchronizeBox.setAttribute("open", "true");
+    msgBoxCover.className = " open ";
+}
+synchronizeFastLinksOpen.onclick = function () {
+    setFastLink(true);
+    synchronizeFastLinksOpen.setAttribute("open", "true");
+    synchronizeFastLinksClose.setAttribute("open", "false");
+}
+synchronizeFastLinksClose.onclick = function () {
+    setFastLink(false);
+    synchronizeFastLinksClose.setAttribute("open", "true");
+    synchronizeFastLinksOpen.setAttribute("open", "false");
+}
+function setFastLink(to) {
+    if (!to)
+        setFastLinkTo = "?uninit";
+    else
+        setFastLinkTo = "";
+    setFastLinkResult = loadc(apiURL + "/browser/init.php" + setFastLinkTo);
+}
+
+function alert(msg) {
+    alertDate = new Date();
+    alertTime = alertDate.getTime();
+    new_element = document.createElement('div');
+    new_element.setAttribute('id', 'smallMsg' + alertTime);
+    new_element.setAttribute('class', 'msgBox smallMsg');
+    document.body.appendChild(new_element);
+    document.getElementById('smallMsg' + alertTime).innerHTML = `<p>` + msg + `</p>
+    <button data-i18n="close" id="aboutClose" onclick="document.getElementById('smallMsg`+ alertTime + `').setAttribute('open','false'); msgBoxCover.setAttribute('smallMsg','false');"></button>`;
+    changeLanguage();
+    document.getElementById('smallMsg' + alertTime).setAttribute("open", "true");
+    msgBoxCover.setAttribute("smallMsg", "true");
+}
+function loadc(name) {
+    $.ajax(name, {
+        type: "GET",
+        async: false,
+        data: {},
+        crossDomain: true,
+        datatype: "jsonp",
+        xhrFields: { withCredentials: true },
+        success: function (data) {
+            let status = data['status'];
+            toReturn = data['info'];
+
+        },
+        error: function () {
+            toReturn = "error";
+        }
+    });
+    return toReturn;
 }

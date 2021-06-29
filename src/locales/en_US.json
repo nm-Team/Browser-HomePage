@@ -2,6 +2,10 @@
 	"aboutBox": {
 		"h1": "About the nmBrowser start page"
 	},
+	"account": {
+		"click_to_log": "Click to login",
+		"unable_to_load": "Unable to connect to login server"
+	},
 	"cancel": "Cancel",
 	"close": "shut down",
 	"confirm": "Confirm",
@@ -22,11 +26,13 @@
 		"LTB": "Upleft",
 		"RTB": "Upright",
 		"about": "About",
+		"bSearchH": "URL only",
 		"baidu": "Baidu",
 		"bgImage": "Background",
 		"bgImageOri": "Source",
 		"bing": "Bing",
 		"bingImage": "Bing",
+		"clear": "Clear",
 		"close": "Off",
 		"colorAuto": "System",
 		"colorDark": "Dark",
@@ -41,14 +47,22 @@
 		"quickAccess": "Quick Links",
 		"searchBox": "Search Bar",
 		"searchE": "Engine",
+		"searchH": "Search Assistant",
 		"selfImg": "Customize",
 		"shide": "Blur background when searching",
 		"siteMap": "Navigation",
+		"synchronize": "Manage synchronization",
 		"time": "Replace title with time",
 		"wea": "the weather"
 	},
 	"news": "News",
 	"not_available_region": "Sorry, this service is not available in your country or region.",
 	"start": "Start",
+	"synchronize": {
+		"fastLinks": "Quick Links",
+		"h1": "Manage synchronization",
+		"nomore": "There are no more synchronizations available now. Once there is more synchronization, we will show it here.",
+		"tip": " "
+	},
 	"title": "Homepage"
 }

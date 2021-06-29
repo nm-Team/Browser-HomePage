@@ -2,6 +2,10 @@
 	"aboutBox": {
 		"h1": "關於 nmBrowser 啟動頁"
 	},
+	"account": {
+		"click_to_log": "點擊登錄",
+		"unable_to_load": "無法連接登錄服務器"
+	},
 	"cancel": "取消",
 	"close": "關閉",
 	"confirm": "確認",
@@ -22,11 +26,13 @@
 		"LTB": "左上角",
 		"RTB": "右上角",
 		"about": "關於",
+		"bSearchH": "僅 URL",
 		"baidu": "百度",
 		"bgImage": "背景圖片",
 		"bgImageOri": "圖片源",
 		"bing": "必應",
 		"bingImage": "必應",
+		"clear": "清除",
 		"close": "關",
 		"colorAuto": "跟隨系統",
 		"colorDark": "暗",
@@ -41,14 +47,22 @@
 		"quickAccess": "快速鏈接",
 		"searchBox": "搜索框",
 		"searchE": "搜索引擎",
+		"searchH": "搜索助手",
 		"selfImg": "自定義",
 		"shide": "搜索時模糊背景",
 		"siteMap": "導航",
+		"synchronize": "管理同步",
 		"time": "以時間取代標題",
 		"wea": "天氣"
 	},
 	"news": "新聞",
 	"not_available_region": "抱歉，此服務在您所在的國家或地區無法使用。",
 	"start": "開始",
+	"synchronize": {
+		"fastLinks": "快速鏈接",
+		"h1": "管理同步",
+		"nomore": "現在已經沒有更多可用的同步。一旦有更多同步，我們將在這裡展示。",
+		"tip": ""
+	},
 	"title": "主頁"
 }
