@@ -1,5 +1,6 @@
 logURL = "";
 apiURL = "";
+
 // 初始设置
 if (localStorage.getItem("started") == null) {
     document.getElementsByTagName("body")[0].setAttribute("firstTime", "true");
@@ -592,6 +593,10 @@ cancelLinks.onclick = function () {
     linkEdit.setAttribute("open", "false");
     msgBoxCover.className = "";
 }
+closeSynchronizeBox.onclick = function () {
+    synchronizeBox.setAttribute("open", "false");
+    msgBoxCover.className = "";
+}
 // 右键快速链接的菜单
 function fastMenu(id) {
     new_element = document.createElement('div');
@@ -661,19 +666,7 @@ function hideMenu(nosave = false) {
 noSuchCover.onclick = function () {
     hideMenu();
 }
-// fetch
 
-async function getJSON(url) {
-    try {
-        let response = await fetch(url, {
-            method: 'GET',
-            mode: 'cors',
-        });
-        return await response.json();
-    } catch (error) {
-        console.log('Request Failed', error);
-    }
-}
 function IsURL(strUrl) {
     var regular = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
     if (regular.test(strUrl)) {
@@ -683,12 +676,14 @@ function IsURL(strUrl) {
         return false;
     }
 }
+
 function copy(textToCopy) {
     copyTextBox.innerHTML = textToCopy;
     copyTextBox.select();
     document.execCommand("copy");
     return 0;
 }
+
 setInterval(function () {
     var time = new Date();
     timeText = fix(time.getHours()) + ":" + fix(time.getMinutes());
@@ -758,7 +753,7 @@ function alert(msg) {
     new_element.setAttribute('class', 'msgBox smallMsg');
     document.body.appendChild(new_element);
     document.getElementById('smallMsg' + alertTime).innerHTML = `<p>` + msg + `</p>
-    <button data-i18n="close" id="aboutClose" onclick="document.getElementById('smallMsg`+ alertTime + `').setAttribute('open','false'); msgBoxCover.setAttribute('smallMsg','false');"></button>`;
+    <button data-i18n="close" onclick="document.getElementById('smallMsg`+ alertTime + `').setAttribute('open','false'); msgBoxCover.setAttribute('smallMsg','false');"></button>`;
     changeLanguage();
     document.getElementById('smallMsg' + alertTime).setAttribute("open", "true");
     msgBoxCover.setAttribute("smallMsg", "true");
