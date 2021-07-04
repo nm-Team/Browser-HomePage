@@ -42,7 +42,7 @@
 		"google": "谷歌",
 		"lan": "语言",
 		"mamage": "管理",
-		"news": "新闻与资讯",
+		"news": "新闻与资讯*",
 		"open": "开",
 		"quickAccess": "快速链接",
 		"searchBox": "搜索框",
@@ -50,13 +50,18 @@
 		"searchH": "搜索助手",
 		"selfImg": "自定义",
 		"shide": "搜索时模糊背景",
-		"siteMap": "导航",
+		"siteMap": "导航*",
 		"synchronize": "管理同步",
 		"time": "以时间取代标题",
 		"wea": "天气"
 	},
 	"news": "新闻",
 	"not_available_region": "抱歉，此服务在您所在的国家或地区无法使用。",
+	"searchTip": {
+		"go": "访问",
+		"search": "搜索",
+		"trans": "翻译"
+	},
 	"start": "开始",
 	"synchronize": {
 		"fastLinks": "快速链接",
@@ -64,5 +69,5 @@
 		"nomore": "现在已经没有更多可用的同步。一旦有更多同步，我们将在这里展示。",
 		"tip": " "
 	},
-	"title": "主页"
+	"title": "新标签页"
 }

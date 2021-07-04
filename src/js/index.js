@@ -1,5 +1,9 @@
 logURL = "";
 apiURL = "";
+thisIsEnglish = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?<>-=+_:;'`\"\\[]{}()*&^%$#@!~ ";
+thisIsNumber = "1234567890";
+transHeadA = "https://translate.google.cn/?sl=auto&tl=auto&text=";
+transHeadB = "&op=translate";
 
 // 初始设置
 if (localStorage.getItem("started") == null) {
@@ -23,6 +27,8 @@ if (localStorage.getItem("started") == null) {
     setSh();
     localStorage.setItem("searchE", "baidu");
     setSearchE();
+    localStorage.setItem("searchH", "true");
+    setSearchH();
     localStorage.setItem("siteMap", "true");
     setMap();
     localStorage.setItem("news", "true");
@@ -34,13 +40,13 @@ if (localStorage.getItem("started") == null) {
     localStorage.setItem("wea", "LTB");
     setWea();
 }
+
 startUsing.onclick = function () {
     localStorage.setItem("started", "true");
     loadingCover.setAttribute("hidden", "true");
     headerClickMenu.setAttribute("firstTime", "false");
     header.setAttribute("firstTime", "false");
     document.getElementsByTagName("body")[0].setAttribute("firstTime", "false");
-
 }
 
 // Header 动画
@@ -90,6 +96,7 @@ header.onclick = function () {
     //     setTimeout(function () { maindiv.scrollTop--; }, 530);
     // }
 }
+
 // 搜索
 function search() {
     if (IsURL(searchInput.value))
@@ -100,9 +107,138 @@ searchInput.onfocus = function () {
     if (localStorage.getItem("shide") == "true")
         bodybg.setAttribute("blur", "true");
 }
+searchHelper.getElementsByTagName("div").onmouseover = function () {
+    if (localStorage.getItem("shide") == "true")
+        bodybg.setAttribute("blur", "true");
+}
+// searchBox.onmouseout = function () {
+//     bodybg.setAttribute("blur", "false");
+// }
 searchInput.onblur = function () {
     bodybg.setAttribute("blur", "false");
 }
+
+// 搜索预测
+/* 预测逻辑：
+ * 如果直接是URL：跳转、搜索、搜索预测
+ * 如果输入有小数点，同时纯英文没有中文：跳转网址、搜索、翻译、搜索预测
+ * 如果输入无小数但纯英文没有中文：翻译、跳转网址、搜索、搜索预测
+ * 如果输入有中文：搜索、搜索预测
+ * 
+ * 注：翻译仅在语言为简体中文、繁体中文、日文开启，页面语言为英语则不提供翻译
+ */
+
+// 搜索预测主进程
+
+searchBox.oninput = function () {
+    searchHelperMain();
+}
+
+function searchHelperMain() {
+    newSearchHelperHTML = "";
+    typedWord = searchInput.value;
+    typedLength = typedWord.length;
+    // 如果搜索框为空什么都不做
+    if (typedWord) noShowHelper = false;
+    else noShowHelper = true;
+    // 判断是不是URL
+    if (IsURL(typedWord)) {
+        isURL = true;
+        console.log("Search words must be an URL");
+    }
+    else {
+        isURL = false;
+        // 判断是不是纯英文
+        searchIsEnglish = true;
+        for (searchEnglish = 0; searchEnglish < typedLength; searchEnglish++) {
+            for (searchEngSB = 0; searchEngSB < thisIsEnglish.length; searchEngSB++) {
+                if (typedWord[searchEnglish] == thisIsEnglish[searchEngSB])
+                    break;
+                else if (searchEngSB == thisIsEnglish.length - 1) {
+                    searchIsEnglish = false;
+                    console.log("The words contains something that doesn't belong to English");
+                }
+            }
+            if (!searchIsEnglish) break;
+        }
+        // 判断有没有小数点儿
+        if (typedWord.match(/\./g)) {
+            hasDot = true;
+            console.log("There're dot(s) in search words");
+        }
+        else hasDot = false;
+    }
+    // 执行操作选取部分
+    // 设置新数据暂存
+    // 如果非URL不可：跳转、搜索、搜索预测
+    if (!noShowHelper) {
+        if (isURL) {
+            newSearchHelperHTML = shNB("jump") + shNB("search") + shNB("sp");
+        }
+        // 如果不一定是URL但是既有小数点又是纯英文：跳转网址、搜索、翻译、搜索预测
+        else if (searchIsEnglish && hasDot) {
+            newSearchHelperHTML = shNB("jump") + shNB("search") + shNB("trans") + shNB("sp");
+        }
+        // 如果输入无小数但纯英文没有中文：翻译、跳转网址、搜索、搜索预测
+        else if (searchIsEnglish) {
+            newSearchHelperHTML = shNB("trans") + shNB("jump") + shNB("search") + shNB("sp");
+        }
+        // 如果输入有中文：搜索、搜索预测
+        else if (!searchIsEnglish) {
+            newSearchHelperHTML = shNB("search") + shNB("trans") + shNB("sp");
+        }
+    }
+    searchHelper.innerHTML = newSearchHelperHTML;
+    // 设置searchHelper的大小
+    helperTotalLength = searchHelper.getElementsByTagName("div").length;
+    if (helperTotalLength != 0)
+        helperPlus = 6;
+    else helperPlus = 0;
+    changeLanguage();
+    searchHelper.style.height = (helperTotalLength * 36 + helperPlus) + "px";
+}
+
+// 放置一个搜索预测块
+function shNB(type, value = searchInput.value) {
+    switch (type) {
+        case "jump":
+            shNBGoTip = '<l> </l><t data-i18n="searchTip.go"></t><svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M849.740351 565.894737c-17.066667 0-31.438596 14.37193-31.438597 31.438596v208.392983h-589.249122V233.54386h222.764912c17.066667 0 31.438596-14.37193 31.438596-31.438597s-14.37193-31.438596-31.438596-31.438596H206.596491c-22.45614 0-41.319298 17.964912-41.319298 41.319298v615.298246c0 22.45614 17.964912 41.319298 41.319298 41.319298H839.859649c22.45614 0 40.421053-17.964912 40.421053-41.319298v-229.950878c0.898246-17.066667-13.473684-31.438596-30.540351-31.438596z" p-id="5314"></path><path d="M532.659649 540.74386c8.084211 0 16.168421-2.694737 21.557895-8.982456l257.796491-249.712281v193.122807c0 17.066667 14.37193 31.438596 31.438597 31.438596s31.438596-14.37193 31.438596-31.438596v-263.185965c0-22.45614-17.964912-40.421053-40.421053-40.421053h-267.677193c-17.066667 0-31.438596 14.37193-31.438596 31.438597s14.37193 31.438596 31.438596 31.438596h203.901755l-260.491228 252.407018c-12.575439 11.677193-12.575439 32.336842-0.898246 44.014035 7.185965 6.287719 15.270175 9.880702 23.354386 9.880702z" p-id="5315"></path></svg>';
+            // 如果输入框的网址没有协议头，咱给他加一个http
+            if (!isURL)
+                shNBGoURL = 'http://' + typedWord;
+            else shNBGoURL = typedWord;
+            break;
+        case "search":
+            shNBGoTip = '<l> </l><t data-i18n="searchTip.search"></t><svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M400.696889 801.393778A400.668444 400.668444 0 1 1 400.696889 0a400.668444 400.668444 0 0 1 0 801.393778z m0-89.031111a311.637333 311.637333 0 1 0 0-623.331556 311.637333 311.637333 0 0 0 0 623.331556z"></path><path d="M667.904 601.998222l314.766222 314.823111-62.919111 62.976-314.823111-314.823111z"></path></svg>';
+            shNBGoURL = searchHead + typedWord;
+            break;
+        case "trans":
+            shNBGoTip = '<l> </l><t data-i18n="searchTip.trans"></t><svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M549.12 642.986667l-108.373333-107.093334 1.28-1.28A747.52 747.52 0 0 0 600.32 256H725.333333V170.666667h-298.666666V85.333333H341.333333v85.333334H42.666667v84.906666h476.586666C490.666667 337.92 445.44 416 384 484.266667 344.32 440.32 311.466667 392.106667 285.44 341.333333h-85.333333c31.146667 69.546667 73.813333 135.253333 127.146666 194.56l-217.173333 214.186667L170.666667 810.666667l213.333333-213.333334 132.693333 132.693334 32.426667-87.04zM789.333333 426.666667h-85.333333L512 938.666667h85.333333l47.786667-128h202.666667L896 938.666667h85.333333l-192-512z m-111.786666 298.666666l69.12-184.746666L815.786667 725.333333h-138.24z" p-id="2400"></path></svg>';
+            shNBGoURL = transHeadA + typedWord + transHeadB;
+            break;
+        case "sp":
+            return "";
+    }
+    return `<div onclick="window.location.href='` + shNBGoURL + `'">` + value + `<goTip>` + shNBGoTip + `</goTip></div>`;
+}
+
+//上下键事件
+
+
+
+// 监听键盘
+document.onkeydown = function (event) {
+    var e = event || window.event || arguments.callee.caller.arguments[0];
+
+    if (e && e.keyCode == 38) {//上
+        helperMove("up");
+    }
+
+    if (e && e.keyCode == 40) {//下
+        helperMove("down");
+    }
+};
+
 // 顶部按钮
 function openHeaderMenu() {
     headerClickMenu = document.getElementById("headerClickMenu");
@@ -140,15 +276,15 @@ noSearchB.onclick = function () {
 }
 searchHB.onclick = function () {
     localStorage.setItem("searchH", "true");
-    setsearchH();
+    setSearchH();
 }
 bSearchHB.onclick = function () {
     localStorage.setItem("searchH", "url");
-    setsearchH();
+    setSearchH();
 }
 noSearchHB.onclick = function () {
     localStorage.setItem("searchH", "false");
-    setsearchH();
+    setSearchH();
 }
 linkOpenB.onclick = function () {
     localStorage.setItem("quickAccess", "true");
@@ -292,8 +428,8 @@ function setSearch() {
     }
     console.log("Set search to " + toSet);
 }
-setsearchH();
-function setsearchH() {
+setSearchH();
+function setSearchH() {
     resetButton("searchHC");
     toSet = localStorage.getItem("searchH");
     if (toSet == "true") {
@@ -332,7 +468,7 @@ function setSearchE() {
         searchHead = "https://www.bing.com/search?q=";
     } if (toSet == "google") {
         sGoogleB.className = "on";
-        searchHead = "https://google.com/s?wd=";
+        searchHead = "https://www.google.com/search?q=";
     }
     console.log("Set search engine to " + toSet);
 }
@@ -668,13 +804,9 @@ noSuchCover.onclick = function () {
 }
 
 function IsURL(strUrl) {
-    var regular = /^([hH][tT]{2}[pP]:\/\/|[hH][tT]{2}[pP][sS]:\/\/)(([A-Za-z0-9-~]+)\.)+([A-Za-z0-9-~\/])+$/;
-    if (regular.test(strUrl)) {
+    if (strUrl.slice(0, 7) == "http://" || strUrl.slice(0, 8) == "https://" || strUrl.slice(0, 7) == "ftps://" || strUrl.slice(0, 6) == "ftp://")
         return true;
-    }
-    else {
-        return false;
-    }
+    else return false;
 }
 
 function copy(textToCopy) {
@@ -704,23 +836,22 @@ window.onmousemove = function (event) {
 
 // 登录账户
 window.onload = function () {
-    accountInfo = getInfo();
-    accountBox.setAttribute("onclick", "window.location.href=`" + logURL + "?name=target.browser_home_page&returnto=" + window.location.href + "&msg=msg.browser_home_page`");
-    if (accountInfo == -1) {
-        nickBox.innerHTML = "<span data-i18n='account.click_to_log'></span>";
-    }
-    else if (accountInfo == -2) {
-        nickBox.innerHTML = "<span data-i18n='account.unable_to_load'></span>";
-    }
-    else {
-        avatarBox.style.backgroundImage = "url(" + accountInfo['avatar'] + ")";
-        nickBox.innerHTML = accountInfo['nick'];
-        accountBox.setAttribute("onclick", "window.open(`" + logURL + "/info.html`)");
-    }
-    changeLanguage();
-        setTimeout(() => {
-        document.getElementsByTagName("body")[0].setAttribute("transition", "true");
-    }, 2000);
+    document.getElementsByTagName("body")[0].setAttribute("transition", "true");
+    getInfo(function (accountInfo) {
+        accountBox.setAttribute("onclick", "window.location.href=`" + logURL + "?name=target.browser_home_page&returnto=" + window.location.href + "&msg=msg.browser_home_page`");
+        if (accountInfo == -1) {
+            nickBox.innerHTML = "<span data-i18n='account.click_to_log'></span>";
+        }
+        else if (accountInfo == -2) {
+            nickBox.innerHTML = "<span data-i18n='account.unable_to_load'></span>";
+        }
+        else {
+            avatarBox.style.backgroundImage = "url(" + accountInfo['avatar'] + ")";
+            nickBox.innerHTML = accountInfo['nick'];
+            accountBox.setAttribute("onclick", "window.open(`" + logURL + "/info.html`)");
+        }
+        changeLanguage();
+    });
 }
 
 synchronizeB.onclick = function () {
@@ -776,4 +907,30 @@ function loadc(name) {
         }
     });
     return toReturn;
+}
+// 工程菜单
+function showDeveloperMenu() {
+    try { showDeveloperMenuNum++; }
+    catch (e) { showDeveloperMenuNum = 0; }
+    if (showDeveloperMenuNum >= 6) {
+        developerMenu.setAttribute("open", "true");
+        developerButton.style.display = "inline";
+    }
+}
+
+function hideDeveloperMenu() {
+    showDeveloperMenuNum = 0;
+    developerMenu.setAttribute("open", "false");
+}
+
+function errorChecker() {
+    errorCheckResultBox.innerHTML = "Running...";
+    runChecker = new Function(errorCheckInputBox.value);
+    try {
+        errorCheckResultBox.innerHTML = runChecker();
+    } catch (err) {
+        errorCheckResultBox.innerHTML += `
+---------
+`+ err;
+    }
 }

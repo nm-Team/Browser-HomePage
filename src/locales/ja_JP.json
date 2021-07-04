@@ -42,7 +42,7 @@
 		"google": "Google",
 		"lan": "言語",
 		"mamage": "管理",
-		"news": "ニュース ",
+		"news": "ニュース*",
 		"open": "開いた",
 		"quickAccess": "速いリーチ ",
 		"searchBox": "検索バー",
@@ -50,13 +50,18 @@
 		"searchH": "検索アシスタント",
 		"selfImg": "カスタマイズ",
 		"shide": "検索時に背景をぼかす",
-		"siteMap": "ナビゲーション",
+		"siteMap": "ナビゲーション*",
 		"synchronize": "同期を管理する",
 		"time": "タイトルを時間に置き換えます",
 		"wea": "天候"
 	},
 	"news": "ニュース",
 	"not_available_region": "申し訳ありませんが、このサービスはお住まいの国または地域ではご利用いただけません。",
+	"searchTip": {
+		"go": "アクセス",
+		"search": "検索する",
+		"trans": "翻訳"
+	},
 	"start": "開始する",
 	"synchronize": {
 		"fastLinks": "クイックリンク",

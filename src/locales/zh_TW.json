@@ -42,7 +42,7 @@
 		"google": "谷歌",
 		"lan": "語言",
 		"mamage": "管理",
-		"news": "新聞與資訊",
+		"news": "新聞與資訊*",
 		"open": "開",
 		"quickAccess": "快速鏈接",
 		"searchBox": "搜索框",
@@ -50,13 +50,18 @@
 		"searchH": "搜索助手",
 		"selfImg": "自定義",
 		"shide": "搜索時模糊背景",
-		"siteMap": "導航",
+		"siteMap": "導航*",
 		"synchronize": "管理同步",
 		"time": "以時間取代標題",
 		"wea": "天氣"
 	},
 	"news": "新聞",
 	"not_available_region": "抱歉，此服務在您所在的國家或地區無法使用。",
+	"searchTip": {
+		"go": "訪問",
+		"search": "搜索",
+		"trans": "翻譯"
+	},
 	"start": "開始",
 	"synchronize": {
 		"fastLinks": "快速鏈接",

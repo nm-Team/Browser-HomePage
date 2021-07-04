@@ -1,35 +1,35 @@
 {
 	"aboutBox": {
-		"h1": "About the nmBrowser start page"
+		"h1": "About The nmBrowser Start Page"
 	},
 	"account": {
-		"click_to_log": "Click to login",
-		"unable_to_load": "Unable to connect to login server"
+		"click_to_log": "Click to Login",
+		"unable_to_load": "Unable to Connect to The Server"
 	},
 	"cancel": "Cancel",
-	"close": "shut down",
+	"close": "Close",
 	"confirm": "Confirm",
 	"daochu": "Export",
 	"daoru": "Import",
 	"developing": "This feature is still under development, so stay tuned.",
 	"imgPicker": {
-		"h1": "Custom photo",
+		"h1": "Custom Photo",
 		"p": "Enter the picture address:"
 	},
 	"linkEdit": {
-		"h1": "Edit quick link",
-		"tip": "You can insert up to 8 frequently used links."
+		"h1": "Edit Fast Links",
+		"tip": "You can insert up to 8 fast links."
 	},
 	"map": "Navigation",
 	"menu": {
-		"2ciyuan": "2element",
+		"2ciyuan": "2-Element",
 		"LTB": "Upleft",
 		"RTB": "Upright",
 		"about": "About",
-		"bSearchH": "URL only",
+		"bSearchH": "URL Only",
 		"baidu": "Baidu",
-		"bgImage": "Background",
-		"bgImageOri": "Source",
+		"bgImage": "Background Image",
+		"bgImageOri": "Image Source",
 		"bing": "Bing",
 		"bingImage": "Bing",
 		"clear": "Clear",
@@ -37,32 +37,37 @@
 		"colorAuto": "System",
 		"colorDark": "Dark",
 		"colorImg": "Identify",
-		"colorLight": "Bright",
+		"colorLight": "Light",
 		"colorTheme": "Theme",
 		"google": "Google",
 		"lan": "Language",
 		"mamage": "Manage",
-		"news": "News ",
+		"news": "News*",
 		"open": "On",
 		"quickAccess": "Quick Links",
 		"searchBox": "Search Bar",
-		"searchE": "Engine",
+		"searchE": "Search Engine",
 		"searchH": "Search Assistant",
 		"selfImg": "Customize",
-		"shide": "Blur background when searching",
-		"siteMap": "Navigation",
-		"synchronize": "Manage synchronization",
+		"shide": "Blur Background When Searching",
+		"siteMap": "Navigation*",
+		"synchronize": "Manage Synchronization",
 		"time": "Replace title with time",
-		"wea": "the weather"
+		"wea": "Weather"
 	},
 	"news": "News",
 	"not_available_region": "Sorry, this service is not available in your country or region.",
+	"searchTip": {
+		"go": "Go",
+		"search": "Search",
+		"trans": "Translate"
+	},
 	"start": "Start",
 	"synchronize": {
-		"fastLinks": "Quick Links",
-		"h1": "Manage synchronization",
+		"fastLinks": "Fast Links",
+		"h1": "Manage Synchronization",
 		"nomore": "There are no more synchronizations available now. Once there is more synchronization, we will show it here.",
 		"tip": " "
 	},
-	"title": "Homepage"
+	"title": "HomePage"
 }

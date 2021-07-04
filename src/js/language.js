@@ -8,8 +8,9 @@ function changeLanguage(lang) {
         return changeLanguage(undefined);
     }
     else if (lang == undefined) { // 视为页面载入时执行的，而不是更改语言。此种情况作判定
-        if (!getCookie('pageLanguage') || getCookie('pageLanguage') == "auto") { // 没有设置Cookie或者Cookie为auto，可以按照浏览器判断，但因为懒，现在只写中文
-            lang = "zh_CN";
+        if (!getCookie('pageLanguage') || getCookie('pageLanguage') == "auto") { // 没有设置Cookie或者Cookie为auto，可以按照浏览器判断
+            lang = navigator.language || navigator.userLanguage;
+            lang = lang.replace('-', '_');
         }
         else {
             // 设置了 Cookie，按Cookie来
@@ -19,22 +20,26 @@ function changeLanguage(lang) {
     else {
         document.cookie = "pageLanguage=" + lang + "; max-age=999999999999999; path=/; ";
     }
+    if (lang != "zh_CN" & lang != "zh_TW")
+        //加宽设置
+        headerClickMenu.className = " clickMenu widden";
+    else headerClickMenu.className = " clickMenu ";
     language = lang;
-    if(language!="zh_CN"&language!="zh_TW")
-    //加宽设置
-    headerClickMenu.className=" clickMenu widden";
-    else headerClickMenu.className=" clickMenu ";
     i18n.init(
         {
             lng: language,
             // 所有翻译在 /src/locales/ 目录下
             // 注：该目录下的 dev.json 请勿删除
+            fallbackLng: 'zh_CN',
+            // 缺省语言
             resGetPath: '/src/locales/__lng__.json'
         },
         function (t) {
             $('html').i18n();
         }
     );
+    resetButton("lanC");
+    document.getElementById("setLan"+lang).className="on";
 }
 changeLanguage();
 

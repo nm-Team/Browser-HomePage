@@ -35,7 +35,7 @@
 		<logo id="headerlogo"></logo>
 		<logotext id="headerlogotext"></logotext>
 		<logotext id="headerlogotexth"></logotext>
-		<button onclick="openHeaderMenu();"><svg t="1624277726927" class="icon" viewBox="0 0 1024 1024" version="1.1"
+		<button id="openHeaderMenuButton" onclick="openHeaderMenu();"><svg t="1624277726927" class="icon" viewBox="0 0 1024 1024" version="1.1"
 				xmlns="http://www.w3.org/2000/svg" p-id="2387" width="25" height="25">
 				<path d="M204.8 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z" p-id="2388" body></path>
 				<path d="M505.6 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z" p-id="2389"></path>
@@ -44,12 +44,12 @@
 
 	</div>
 	<div class="clickMenu" id="headerClickMenu">
-		<div id="accountBox">
+		<div id="accountBox" class="pointer">
 			<i id="avatarBox"></i>
 			<p id="nickBox">—</p>
 		</div>
-		<div data-i18n="menu.synchronize" id="synchronizeB"></div>
-		<div id="themeC"><span data-i18n="menu.colorTheme"></span>
+		<div data-i18n="menu.synchronize" id="synchronizeB" class="pointer"></div>
+		<div id="themeC"><span data-i18n="menu.colorTheme"></span><developing></developing>
 			<div class="value">
 				<button data-i18n="menu.colorLight" id="lightThemeB"></button><button data-i18n="menu.colorDark"
 					id="darkThemeB"></button><button data-i18n="menu.colorAuto" id="autoThemeB"></button><button
@@ -99,13 +99,13 @@
 			</div>
 		</div>
 
-		<div id="siteMapC"><span data-i18n="menu.siteMap"></span>
+		<div id="siteMapC"><span data-i18n="menu.siteMap"></span><developing></developing>
 			<div class="value">
 				<button data-i18n="menu.open" id="mapOpenB"></button><button data-i18n="menu.close"
 					id="mapCloseB"></button>
 			</div>
 		</div>
-		<div id="newsC"><span data-i18n="menu.news"></span>
+		<div id="newsC"><span data-i18n="menu.news"></span><developing></developing>
 			<div class="value">
 				<button data-i18n="menu.open" id="newsOpenB"></button><button data-i18n="menu.close"
 					id="newsCloseB"></button>
@@ -126,13 +126,13 @@
 
 		<div id="lanC"><span data-i18n="menu.lan"></span>
 			<div class="value">
-				<button id="lanChiB" onclick="changeLanguage('zh_CN');">简体</button><button id="lanFCB"
+				<button id="setLanzh_CN" onclick="changeLanguage('zh_CN');">简体</button><button id="setLanzh_TW"
 					onclick="changeLanguage('zh_TW');">繁体</button>
-				<button id="lanEngB" onclick="changeLanguage('en_US');">Eng</button><button id="lanMihB"
+				<button id="setLanen_US" onclick="changeLanguage('en_US');">Eng</button><button id="setLanja_JP"
 					onclick="changeLanguage('ja_JP');">日本語</button>
 			</div>
 		</div>
-		<div id="aboutC"><span data-i18n="menu.about"></span>
+		<div id="aboutC" class="pointer"><span data-i18n="menu.about"></span>
 		</div>
 	</div>
 	<div id="maindiv">
@@ -143,7 +143,7 @@
 		<div id="searcher">
 			<div class="searchBox" id="searchBox">
 				<form action="javascript:search();">
-					<input id="searchInput" placeholder="Search" tabindex="0" autofocus autocomplete="off">
+					<input id="searchInput" placeholder="Search" tabindex="0" autofocus autocomplete="off" data-i18n="searchInput">
 					<button class="searchButton" id="searchButton" onclick="search();" onchange="searchHelp();"><svg
 							t="1624278681807" class="icon" viewBox="0 0 1024 1024" version="1.1"
 							xmlns="http://www.w3.org/2000/svg" p-id="1226" width="700" height="700">
@@ -154,13 +154,8 @@
 								p-id="1228"></path>
 						</svg></button>
 				</form>
-				<!-- <div id="searchHelper"> -->
-				<!-- <div>nmB<svg viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M519.02036023 459.47959989L221.8941505 162.35411435a37.07885742 37.07885742 0 1 0-52.45354772 52.40502656l297.12476134 297.15010821L169.44060278 809.05863314a37.07885742 37.07885742 0 1 0 52.42964924 52.42892505l297.15010821-297.12476136 297.15010822 297.12476136a37.07885742 37.07885742 0 1 0 52.42892504-52.40430237l-297.12476135-297.1740067 297.12476135-297.12548553a37.07885742 37.07885742 0 1 0-52.42892504-52.42964924L519.04498291 459.47959989z"></path></svg></div>
-					<div>nmB</div>
-					<div>nmB</div> -->
-				<!-- </div> -->
+				<div id="searchHelper">	</div>
 			</div>
-
 		</div>
 		<div id="lover">
 			<div id="myLoves"></div>
@@ -241,7 +236,7 @@
 		<h1 data-i18n="aboutBox.h1"></h1>
 		<div class="main">
 			<img src="//logos.nmteam.agou.im/nmBrowser/logo@128.png"><br />
-			<p>nmBrowser HomePage</p>
+			<p onclick="showDeveloperMenu()">nmBrowser HomePage</p>
 			<p>©2021 nmTeam. All rights reserved. </p>
 			<p><a href="//nmteam.ml?from=nmb_homepage">nmTeam Website</a></p>
 			<p><small>Thanks to the bing photo api api.mfstudio.cc, the quadratic element photo api api.ixiaowai.cn, the
@@ -251,15 +246,28 @@
 			<button data-i18n="close" id="aboutClose"></button>
 		</div>
 	</div>
-	<textarea style="position: fixed;left: 0;right: 100%;top: 0;bottom: 100%;z-index: -999999999999999;opacity: 0;"
-		id="copyTextBox" readonly=""></textarea>
+	<div id="developerMenu" class="msgBox">
+		<h1>Developer Options</h1>
+		<div class="main">
+			<button onclick="alert(getInfo()['data']);">Request User Info JSON</button><br />
+			<button onclick="localStorage.clear();">Clear All Personalizations</button><br />
+			<button onclick='localStorage.setItem("fastLinks", "{\"0\":{\"name\":\"nmTeam\",\"add\":\"https:\/\/nmteam.ml?from=nmbstart\",\"img\":\"https:\/\/logos.nmteam.agou.im/nmTeam/logo@64.png\"},\"1\":{\"name\":\"Sakura Frp\",\"add\":\"https:\/\/natfrp.com\",\"img\":\"\"},\"2\":{\"name\":\"Yuina的图床\",\"add\":\"https:\/\/img.cncn3.cn?from=nmbstart\",\"img\":\"\"},\"3\":{\"name\":\"Bilibili\",\"add\":\"https:\/\/bilibili.com\",\"img\":\"\"},\"4\":{\"name\":\"Pornhub\",\"add\":\"https:\/\/pornhub.com\",\"img\":\"\"},\"5\":{\"name\":\"XYZ1024 Blog\",\"add\":\"https:\/\/xyz1024.top?from=nmbstart\",\"img\":\"\"},\"6\":{\"name\":\"NoyAcg\",\"add\":\"https:\/\/noy.asia?from=nmbstart\",\"img\":\"\"},\"7\":{\"name\":\"Twitter\",\"add\":\"https:\/\/twitter.com\",\"img\":\"\"}}");'>Import Test Fastlinks</button><br />			
+			<p>Error Checker<button onclick="errorChecker();">Run</button></p>
+			<textarea style="width:48%;height:15em;"	id="errorCheckInputBox" placeholder="Javascript to run"></textarea>
+			<textarea style="width:48%;height:15em;"	id="errorCheckResultBox" placeholder="Result" readonly=""></textarea>
+		</div>
+		<div class="buttonCon">
+			<button data-i18n="close" onclick="hideDeveloperMenu()"></button>
+		</div>
+	</div>
+	<svg id="developerButton" onclick='developerMenu.setAttribute("open", "true");' viewBox="0 0 1025 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6154" width="30" height="30"><path d="M649.179 512q0-60.562-42.862-103.424t-103.424-42.862-103.424 42.862T356.607 512t42.862 103.424 103.424 42.862 103.424-42.862T649.179 512z m292.571-62.281v126.866q0 6.839-4.571 13.129t-11.447 7.424l-105.728 16.018q-10.862 30.866-22.272 52.005 20.005 28.562 61.147 78.848 5.705 6.839 5.705 14.299t-5.157 13.129q-15.433 21.138-56.576 61.696t-53.723 40.558q-6.839 0-14.848-5.157l-78.848-61.696q-25.161 13.129-52.005 21.723-9.143 77.714-16.567 106.277-3.986 16.018-20.553 16.018H439.441q-8.009 0-14.007-4.864t-6.583-12.288l-16.018-105.143q-28.014-9.143-51.419-21.138l-80.567 61.147q-5.705 5.157-14.299 5.157-8.009 0-14.299-6.29-72.009-65.134-94.281-96-3.986-5.705-3.986-13.129 0-6.839 4.571-13.129 8.558-11.995 29.147-37.998t30.866-40.302q-15.433-28.562-23.442-56.576L80.566 594.87q-7.424-1.134-11.995-7.131T64 574.317V447.451q0-6.839 4.571-13.129t10.862-7.424L185.71 410.88q8.009-26.295 22.272-52.553-22.857-32.585-61.147-78.848-5.705-6.839-5.705-13.714 0-5.705 5.157-13.129 14.848-20.553 56.283-61.44t54.016-40.85q7.424 0 14.848 5.705l78.848 61.147q25.161-13.129 52.005-21.723 9.143-77.714 16.567-106.277 3.986-15.982 20.553-15.982h126.866q8.009 0 14.007 4.864t6.583 12.288l16.018 105.143q28.014 9.143 51.419 21.138l81.152-61.147q5.157-5.157 13.714-5.157 7.424 0 14.299 5.705 73.728 67.986 94.281 97.134 3.986 4.571 3.986 12.581 0 6.839-4.571 13.129-8.558 11.995-29.147 37.998t-30.866 40.302q14.848 28.562 23.442 55.991l104.558 16.018q7.424 1.134 11.995 7.131t4.571 13.422z" p-id="6155" fill="#bfbfbf"></path></svg>
+	<textarea style="position: fixed;left: 0;right: 100%;top: 0;bottom: 100%;z-index: -999999999999999;opacity: 0;" id="copyTextBox" readonly=""></textarea>
 
 </body>
 <script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdn.bootcdn.net/ajax/libs/i18next/1.6.3/i18next-1.6.3.min.js"></script>
-<script src="http://localhost:2338/src/js/getinfo.js"></script>
+<script src="https://accounts.nmteam.ml/src/js/getinfo.js"></script>
 <script src="/src/js/index.js"></script>
 <script src="/src/js/language.js"></script>
-<!-- <script type="text/javascript" src="https://www.wjx.cn/js/ap.js?activity=h4gyg7Y" id="wjxFloatBtnJsCode"></script> -->
 
 </html>
