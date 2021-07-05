@@ -20,10 +20,6 @@ function changeLanguage(lang) {
     else {
         document.cookie = "pageLanguage=" + lang + "; max-age=999999999999999; path=/; ";
     }
-    if (lang != "zh_CN" & lang != "zh_TW")
-        //加宽设置
-        headerClickMenu.className = " clickMenu widden";
-    else headerClickMenu.className = " clickMenu ";
     language = lang;
     i18n.init(
         {
@@ -38,8 +34,12 @@ function changeLanguage(lang) {
             $('html').i18n();
         }
     );
+    if (language != "zh_CN" & language != "zh_TW")
+        //加宽设置
+        headerClickMenu.className = " clickMenu widden";
+    else headerClickMenu.className = " clickMenu ";
     resetButton("lanC");
-    document.getElementById("setLan"+lang).className="on";
+    document.getElementById("setLan" + lang).className = "on";
 }
 changeLanguage();
 

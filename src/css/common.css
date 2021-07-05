@@ -404,7 +404,7 @@ cursor: pointer;
     border-radius: 25px;
     background-image: url(https://static.hdslb.com/images/akari.jpg);
     background-position: 0px,0px;
-    background-size: 32px;
+    background-size: 32px 32px;
     background-repeat: no-repeat;
 }
 #nickBox{

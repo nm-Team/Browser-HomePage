@@ -249,7 +249,9 @@
 	<div id="developerMenu" class="msgBox">
 		<h1>Developer Options</h1>
 		<div class="main">
-			<button onclick="alert(getInfo()['data']);">Request User Info JSON</button><br />
+			<button onclick="getInfo(function(){alert(returnWord+data)});">Request User Info JSON</button><br />
+<button onclick="localStorage.setItem('showDevBut',true)">Always show developers' Button</button> 
+<button onclick="localStorage.setItem('showDevBut',false)">Reset this setting</button><br />
 			<button onclick="localStorage.clear();">Clear All Personalizations</button><br />
 			<button onclick='localStorage.setItem("fastLinks", "{\"0\":{\"name\":\"nmTeam\",\"add\":\"https:\/\/nmteam.ml?from=nmbstart\",\"img\":\"https:\/\/logos.nmteam.agou.im/nmTeam/logo@64.png\"},\"1\":{\"name\":\"Sakura Frp\",\"add\":\"https:\/\/natfrp.com\",\"img\":\"\"},\"2\":{\"name\":\"Yuina的图床\",\"add\":\"https:\/\/img.cncn3.cn?from=nmbstart\",\"img\":\"\"},\"3\":{\"name\":\"Bilibili\",\"add\":\"https:\/\/bilibili.com\",\"img\":\"\"},\"4\":{\"name\":\"Pornhub\",\"add\":\"https:\/\/pornhub.com\",\"img\":\"\"},\"5\":{\"name\":\"XYZ1024 Blog\",\"add\":\"https:\/\/xyz1024.top?from=nmbstart\",\"img\":\"\"},\"6\":{\"name\":\"NoyAcg\",\"add\":\"https:\/\/noy.asia?from=nmbstart\",\"img\":\"\"},\"7\":{\"name\":\"Twitter\",\"add\":\"https:\/\/twitter.com\",\"img\":\"\"}}");'>Import Test Fastlinks</button><br />			
 			<p>Error Checker<button onclick="errorChecker();">Run</button></p>
@@ -264,8 +266,8 @@
 	<textarea style="position: fixed;left: 0;right: 100%;top: 0;bottom: 100%;z-index: -999999999999999;opacity: 0;" id="copyTextBox" readonly=""></textarea>
 
 </body>
-<script src="https://cdn.bootcdn.net/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<script src="https://cdn.bootcdn.net/ajax/libs/i18next/1.6.3/i18next-1.6.3.min.js"></script>
+<script src="/src/js/jquery.min.js"></script>
+<script src="/src/js/i18next-1.6.3.min.js"></script>
 <script src="https://accounts.nmteam.ml/src/js/getinfo.js"></script>
 <script src="/src/js/index.js"></script>
 <script src="/src/js/language.js"></script>
