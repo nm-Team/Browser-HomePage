@@ -4,6 +4,7 @@
 	},
 	"account": {
 		"click_to_log": "Click to Login",
+		"loading": "Loading...",
 		"unable_to_load": "Unable to Connect to The Server"
 	},
 	"cancel": "Cancel",

@@ -101,10 +101,19 @@ header.onclick = function () {
 function search() {
     if (IsURL(searchInput.value))
         window.location.href = searchInput.value;
-    else if (searchIsEnglish && hasDot)
-        window.location.href = "http://" + searchInput.value;
-    else
-        window.location.href = searchHead + searchInput.value;
+    else {
+        try {
+            searchIsEnglish && hasDot && !hasSpace;
+        }
+        catch (err) {
+            searchIsEnglish = hasDot = hasSpace = false;
+        }
+        if (searchIsEnglish && hasDot && !hasSpace)
+            window.location.href = "http://" + searchInput.value;
+        else
+            window.location.href = searchHead + searchInput.value;
+
+    }
 }
 searchInput.onfocus = function () {
     if (localStorage.getItem("shide") == "true")
@@ -124,7 +133,7 @@ searchInput.onblur = function () {
 // 搜索预测
 /* 预测逻辑：
  * 如果直接是URL：跳转、搜索、搜索预测
- * 如果输入有小数点，同时纯英文没有中文：跳转网址、搜索、翻译、搜索预测
+ * 如果输入有小数点，同时纯英文没有中文、无空格：跳转网址、搜索、翻译、搜索预测
  * 如果输入无小数但纯英文没有中文：翻译、跳转网址、搜索、搜索预测
  * 如果输入有中文：搜索、搜索预测
  * 
@@ -170,6 +179,12 @@ function searchHelperMain() {
             console.log("There're dot(s) in search words");
         }
         else hasDot = false;
+        // 判断有没有空格
+        if (typedWord.match(/ /g)) {
+            hasSpace = true;
+            console.log("There're space(s) in search words");
+        }
+        else hasSpace = false;
     }
     // 执行操作选取部分
     // 设置新数据暂存
@@ -178,9 +193,13 @@ function searchHelperMain() {
         if (isURL) {
             newSearchHelperHTML = shNB("jump") + shNB("search") + shNB("sp");
         }
-        // 如果不一定是URL但是既有小数点又是纯英文：跳转网址、搜索、翻译、搜索预测
-        else if (searchIsEnglish && hasDot) {
+        // 如果不一定是URL但是既有小数点又是纯英文还没有空格：跳转网址、搜索、翻译、搜索预测
+        else if (searchIsEnglish && hasDot && !hasSpace) {
             newSearchHelperHTML = shNB("jump") + shNB("search") + shNB("trans") + shNB("sp");
+        }
+        // 如果不一定是URL但是既有小数点又是纯英文但是有空格：搜索、翻译、搜索预测
+        else if (searchIsEnglish && hasDot && hasSpace) {
+            newSearchHelperHTML = shNB("search") + shNB("trans") + shNB("sp");
         }
         // 如果输入无小数但纯英文没有中文：翻译、跳转网址、搜索、搜索预测
         else if (searchIsEnglish) {
@@ -222,7 +241,7 @@ function shNB(type, value = searchInput.value) {
         case "sp":
             return "";
     }
-    return `<div onclick="window.location.href='` + shNBGoURL + `'">` + value + `<goTip>` + shNBGoTip + `</goTip></div>`;
+    return `<div tabindex="2"onclick="window.location.href='` + shNBGoURL + `'">` + value + `<goTip>` + shNBGoTip + `</goTip></div>`;
 }
 
 //上下键事件
@@ -854,7 +873,7 @@ window.onload = function () {
         else {
             avatarBox.style.backgroundImage = "url(" + accountInfo['avatar'] + ")";
             nickBox.innerHTML = accountInfo['nick'];
-            accountBox.setAttribute("onclick", "window.open(`" + logURL + "/info.html`)");
+            accountBox.setAttribute("onclick", "window.open(`" + logURL + "/info.html?sessionid=" + getCookie("PHPSESSID") + "`)");
         }
         changeLanguage();
     });
@@ -882,6 +901,14 @@ function setFastLink(to) {
     setFastLinkResult = loadc(apiURL + "/browser/init.php" + setFastLinkTo);
 }
 
+// DIV Enter 打开
+function divClick(div, event) {
+    var e = event || window.event || arguments.callee.caller.arguments[0];
+    if (e && e.keyCode == 13) {
+        div.click();
+    }
+}
+
 function alert(msg) {
     alertDate = new Date();
     alertTime = alertDate.getTime();
@@ -890,7 +917,7 @@ function alert(msg) {
     new_element.setAttribute('class', 'msgBox smallMsg');
     document.body.appendChild(new_element);
     document.getElementById('smallMsg' + alertTime).innerHTML = `<p>` + msg + `</p>
-    <button data-i18n="close" onclick="document.getElementById('smallMsg`+ alertTime + `').setAttribute('open','false'); msgBoxCover.setAttribute('smallMsg','false');"></button>`;
+    <button data-i18n="close" onclick="document.getElementById('smallMsg`+ alertTime + `').setAttribute('open','false'); msgBoxCover.setAttribute('smallMsg','false');document.getElementById('smallMsg` + alertTime + `').outerHTML='';"></button>`;
     changeLanguage();
     document.getElementById('smallMsg' + alertTime).setAttribute("open", "true");
     msgBoxCover.setAttribute("smallMsg", "true");

@@ -44,11 +44,11 @@
 
 	</div>
 	<div class="clickMenu" id="headerClickMenu">
-		<div id="accountBox" class="pointer">
+		<div id="accountBox" class="pointer" tabindex="0" onkeydown="divClick(this, event)">
 			<i id="avatarBox"></i>
 			<p id="nickBox">—</p>
 		</div>
-		<div data-i18n="menu.synchronize" id="synchronizeB" class="pointer"></div>
+		<div data-i18n="menu.synchronize" id="synchronizeB" class="pointer" tabindex="0" onkeydown="divClick(this, event)"></div>
 		<div id="themeC"><span data-i18n="menu.colorTheme"></span><developing></developing>
 			<div class="value">
 				<button data-i18n="menu.colorLight" id="lightThemeB"></button><button data-i18n="menu.colorDark"
@@ -132,7 +132,7 @@
 					onclick="changeLanguage('ja_JP');">日本語</button>
 			</div>
 		</div>
-		<div id="aboutC" class="pointer"><span data-i18n="menu.about"></span>
+		<div id="aboutC" class="pointer" tabindex="0" onkeydown="divClick(this, event)"><span data-i18n="menu.about"></span>
 		</div>
 	</div>
 	<div id="maindiv">
@@ -143,7 +143,7 @@
 		<div id="searcher">
 			<div class="searchBox" id="searchBox">
 				<form action="javascript:search();">
-					<input id="searchInput" placeholder="Search" tabindex="0" autofocus autocomplete="off" data-i18n="searchInput">
+					<input id="searchInput" placeholder="Search" tabindex="0" onkeydown="divClick(this, event)" autofocus autocomplete="off" data-i18n="searchInput">
 					<button class="searchButton" id="searchButton" onclick="search();" onchange="searchHelp();"><svg
 							t="1624278681807" class="icon" viewBox="0 0 1024 1024" version="1.1"
 							xmlns="http://www.w3.org/2000/svg" p-id="1226" width="700" height="700">

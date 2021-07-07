@@ -4,6 +4,7 @@
 	},
 	"account": {
 		"click_to_log": "點擊登錄",
+		"loading": "加載中",
 		"unable_to_load": "無法連接登錄服務器"
 	},
 	"cancel": "取消",

@@ -66,9 +66,13 @@ body.dark #header logotext#headerlogotext[time=true], body.halfDark #header logo
 }
 input,button,textarea{
     color: var(--input);
+    outline: none;
     -webkit-user-select: auto;
     -moz-user-select: auto;
     user-select: auto;
+}
+input:focus-visible,button:focus-visible,textarea:focus-visible{
+    outline: auto;
 }
 #loadingCover{
     position: fixed;
@@ -263,7 +267,6 @@ body.darkfirstTime #header logotext#headerlogotexth, body.dark[firstTime=true] #
     top: 10px;
     right: 25px;
     z-index: 1000;
-    outline: none;
     width: 40px;
     height: 40px;
     padding: 5px;
@@ -336,7 +339,6 @@ body[firstTime=true] #openHeaderMenuButton{
     height: 45px;
     font-size: 20px;
     border: none;
-    outline: none;
     color: var(--menu-text);
     background: none;
     border-radius: 8px;
@@ -349,11 +351,12 @@ body[firstTime=true] #openHeaderMenuButton{
     display: block;
     padding: 10px 12px 10px 18px;
     position: relative;
+    outline: none;
 }
 .clickMenu div.pointer{
-cursor: pointer;
+    cursor: pointer;
 }
-.clickMenu div:hover{
+.clickMenu div:hover,.clickMenu div:focus{
     background-color: var(--hovercolor);
     opacity: 0.9;
     transition: all 0.2s;
@@ -376,7 +379,6 @@ cursor: pointer;
     top: 10px;
     right: 25px;
     z-index: 1000;
-    outline: none;
     padding: 5px;
     border-radius: 5px;
     background: none;
@@ -493,6 +495,7 @@ cursor: pointer;
     color: var(--searchword);
     width: calc(100% - 60px);
 }
+
 #searchButton{
     position: absolute;
     top: 0px;
@@ -500,7 +503,7 @@ cursor: pointer;
     z-index: 6;
     outline: none;
     width: 45px;
-    height: 35px;
+    height: 45px;
     padding: 5px;
     border-radius: 5px;
     background: none;
@@ -514,6 +517,9 @@ cursor: pointer;
 }
 #searchButton:hover svg{
     opacity: 0.7;
+}
+#searchButton:focus-visible{
+    outline: auto;
 }
 #searchHelper{
     border-radius: 0 0 9px 9px;
@@ -652,7 +658,7 @@ cursor: pointer;
     position: fixed;
     width: 230px;
     height: 160px;
-    transform: translate(0px, 54px);
+    transform: translate(-109px, 69px);
     z-index: 66668;
 }
 @media (max-width: 700px) {
@@ -760,7 +766,6 @@ cursor: pointer;
     overflow: auto;
 }
 .msgBox input{
-    outline: none;
     border: none;
     font-size: 16px;
     padding: 8px 10px;
@@ -781,7 +786,6 @@ cursor: pointer;
     height: 35px;
 }
 .msgBox button{
-    outline: none;
     border: none;
     font-size: 15px;
     padding: 6px 11px;

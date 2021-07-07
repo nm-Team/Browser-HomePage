@@ -4,6 +4,7 @@
 	},
 	"account": {
 		"click_to_log": "点击登录",
+		"loading": "加载中",
 		"unable_to_load": "无法连接登录服务器"
 	},
 	"cancel": "取消",
