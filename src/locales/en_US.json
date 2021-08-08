@@ -1,0 +1,74 @@
+{
+	"aboutBox": {
+		"h1": "About The nmBrowser Start Page"
+	},
+	"account": {
+		"click_to_log": "Click to Login",
+		"loading": "Loading...",
+		"unable_to_load": "Unable to Connect to The Server"
+	},
+	"cancel": "Cancel",
+	"close": "Close",
+	"confirm": "Confirm",
+	"daochu": "Export",
+	"daoru": "Import",
+	"developing": "This feature is still under development, so stay tuned.",
+	"imgPicker": {
+		"h1": "Custom Photo",
+		"p": "Enter the picture address:"
+	},
+	"linkEdit": {
+		"h1": "Edit Fast Links",
+		"tip": "You can insert up to 8 fast links."
+	},
+	"map": "Navigation",
+	"menu": {
+		"2ciyuan": "2-Element",
+		"LTB": "Upleft",
+		"RTB": "Upright",
+		"about": "About",
+		"bSearchH": "URL Only",
+		"baidu": "Baidu",
+		"bgImage": "Background Image",
+		"bgImageOri": "Image Source",
+		"bing": "Bing",
+		"bingImage": "Bing",
+		"clear": "Clear",
+		"close": "Off",
+		"colorAuto": "System",
+		"colorDark": "Dark",
+		"colorImg": "Identify",
+		"colorLight": "Light",
+		"colorTheme": "Theme",
+		"google": "Google",
+		"lan": "Language",
+		"mamage": "Manage",
+		"news": "News*",
+		"open": "On",
+		"quickAccess": "Quick Links",
+		"searchBox": "Search Bar",
+		"searchE": "Search Engine",
+		"searchH": "Search Assistant",
+		"selfImg": "Customize",
+		"shide": "Blur Background When Searching",
+		"siteMap": "Navigation*",
+		"synchronize": "Manage Synchronization",
+		"time": "Replace title with time",
+		"wea": "Weather"
+	},
+	"news": "News",
+	"not_available_region": "Sorry, this service is not available in your country or region.",
+	"searchTip": {
+		"go": "Go",
+		"search": "Search",
+		"trans": "Translate"
+	},
+	"start": "Start",
+	"synchronize": {
+		"fastLinks": "Fast Links",
+		"h1": "Manage Synchronization",
+		"nomore": "There are no more synchronizations available now. Once there is more synchronization, we will show it here.",
+		"tip": " "
+	},
+	"title": "HomePage"
+}

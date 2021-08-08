@@ -1,0 +1,74 @@
+{
+	"aboutBox": {
+		"h1": "關於 nmBrowser 啟動頁"
+	},
+	"account": {
+		"click_to_log": "點擊登錄",
+		"loading": "加載中",
+		"unable_to_load": "無法連接登錄服務器"
+	},
+	"cancel": "取消",
+	"close": "關閉",
+	"confirm": "確認",
+	"daochu": "導出",
+	"daoru": "導入",
+	"developing": "此功能還在開發中，敬請期待。",
+	"imgPicker": {
+		"h1": "自定義照片",
+		"p": "輸入圖片地址："
+	},
+	"linkEdit": {
+		"h1": "編輯快速鏈接",
+		"tip": "最多可以插入 8 條常用鏈接。"
+	},
+	"map": "導航",
+	"menu": {
+		"2ciyuan": "二次元",
+		"LTB": "左上角",
+		"RTB": "右上角",
+		"about": "關於",
+		"bSearchH": "僅 URL",
+		"baidu": "百度",
+		"bgImage": "背景圖片",
+		"bgImageOri": "圖片源",
+		"bing": "必應",
+		"bingImage": "必應",
+		"clear": "清除",
+		"close": "關",
+		"colorAuto": "跟隨系統",
+		"colorDark": "暗",
+		"colorImg": "識別圖片",
+		"colorLight": "亮",
+		"colorTheme": "主題",
+		"google": "谷歌",
+		"lan": "語言",
+		"mamage": "管理",
+		"news": "新聞與資訊*",
+		"open": "開",
+		"quickAccess": "快速鏈接",
+		"searchBox": "搜索框",
+		"searchE": "搜索引擎",
+		"searchH": "搜索助手",
+		"selfImg": "自定義",
+		"shide": "搜索時模糊背景",
+		"siteMap": "導航*",
+		"synchronize": "管理同步",
+		"time": "以時間取代標題",
+		"wea": "天氣"
+	},
+	"news": "新聞",
+	"not_available_region": "抱歉，此服務在您所在的國家或地區無法使用。",
+	"searchTip": {
+		"go": "訪問",
+		"search": "搜索",
+		"trans": "翻譯"
+	},
+	"start": "開始",
+	"synchronize": {
+		"fastLinks": "快速鏈接",
+		"h1": "管理同步",
+		"nomore": "現在已經沒有更多可用的同步。一旦有更多同步，我們將在這裡展示。",
+		"tip": ""
+	},
+	"title": "主頁"
+}

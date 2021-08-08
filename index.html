@@ -1,0 +1,293 @@
+<!doctype html>
+<html>
+
+<head>
+
+	<meta charset="utf-8" />
+	<title data-i18n="title">HomePage</title>
+	<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0'>
+	<meta name='apple-mobile-web-app-capable' content='yes'>
+	<meta name='apple-mobile-web-app-status-bar-style' content='black'>
+	<meta name='format-detection' content='telephone=no'>
+	<link rel="stylesheet" type="text/css" href="/src/css/common.css">
+	<!-- <script src="//cdn.junbo.wang/ads.js"></script> -->
+	<script src="/src/js/loadbefore.js"></script>
+
+</head>
+
+<body>
+	<div id="bodybg"></div>
+	<div id="bodyCover"></div>
+	<div id="noSuchCover"></div>
+	<div id="msgBoxCover"></div>
+	<div id="loadingCover">
+		<div class="spinner" style="display: none;">
+			<div class="rect1"></div>
+			<div class="rect2"></div>
+			<div class="rect3"></div>
+			<div class="rect4"></div>
+			<div class="rect5"></div>
+		</div>
+		<button id="startUsing" data-i18n="start"></button>
+	</div>
+	<div id="header">
+		<div id="leftTime"></div>
+		<logo id="headerlogo"></logo>
+		<logotext id="headerlogotext"></logotext>
+		<logotext id="headerlogotexth"></logotext>
+		<button id="openHeaderMenuButton" onclick="openHeaderMenu();"><svg t="1624277726927" class="icon"
+				viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2387" width="25"
+				height="25">
+				<path d="M204.8 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z" p-id="2388" body></path>
+				<path d="M505.6 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z" p-id="2389"></path>
+				<path d="M806.4 505.6m-76.8 0a76.8 76.8 0 1 0 153.6 0 76.8 76.8 0 1 0-153.6 0Z" p-id="2390"></path>
+			</svg></button>
+
+	</div>
+	<div class="clickMenu" id="headerClickMenu">
+		<div id="accountBox" class="pointer" tabindex="0" onkeydown="divClick(this, event)">
+			<i id="avatarBox"></i>
+			<p id="nickBox">—</p>
+		</div>
+		<div data-i18n="menu.synchronize" id="synchronizeB" class="pointer" tabindex="0"
+			onkeydown="divClick(this, event)"></div>
+		<div id="themeC"><span data-i18n="menu.colorTheme"></span>
+			<developing></developing>
+			<div class="value">
+				<button data-i18n="menu.colorLight" id="lightThemeB"></button><button data-i18n="menu.colorDark"
+					id="darkThemeB"></button><button data-i18n="menu.colorAuto" id="autoThemeB"></button><button
+					data-i18n="menu.colorImg" id="imgThemeB"></button>
+			</div>
+		</div>
+		<div id="searchC"><span data-i18n="menu.searchBox"></span>
+			<div class="value">
+				<button data-i18n="menu.open" id="searchB"></button><button data-i18n="menu.close"
+					id="noSearchB"></button>
+			</div>
+		</div>
+		<div id="searchHC"><span data-i18n="menu.searchH"></span>
+			<div class="value">
+				<button data-i18n="menu.open" id="searchHB"></button><button data-i18n="menu.bSearchH"
+					id="bSearchHB"></button><button data-i18n="menu.close" id="noSearchHB"></button>
+			</div>
+		</div>
+		<div id="searchEC"><span data-i18n="menu.searchE"></span>
+			<div class="value">
+				<button data-i18n="menu.baidu" id="sBaiduB"></button><button data-i18n="menu.bing"
+					id="sBingB"></button><button data-i18n="menu.google" id="sGoogleB"></button>
+			</div>
+		</div>
+		<div id="shideC"><span data-i18n="menu.shide"></span>
+			<div class="value">
+				<button data-i18n="menu.open" id="shOpenB"></button><button data-i18n="menu.close"
+					id="shCloseB"></button>
+			</div>
+		</div>
+		<div id="quickAccessC"><span data-i18n="menu.quickAccess"></span>
+			<div class="value">
+				<button data-i18n="menu.mamage" id="linkManageB"></button><button data-i18n="menu.open"
+					id="linkOpenB"></button><button data-i18n="menu.close" id="linkCloseB"></button>
+			</div>
+		</div>
+		<div id="bgImageC"><span data-i18n="menu.bgImage"></span>
+			<div class="value">
+				<button data-i18n="menu.open" id="bgOpenB"></button><button data-i18n="menu.close"
+					id="bgCloseB"></button>
+			</div>
+		</div>
+		<div id="bgImageOriC"><span data-i18n="menu.bgImageOri"></span>
+			<div class="value">
+				<button data-i18n="menu.bingImage" id="imgBingB"></button><button data-i18n="menu.2ciyuan"
+					id="img2cyB"></button><button data-i18n="menu.selfImg" id="imgZdyB"></button>
+			</div>
+		</div>
+
+		<div id="siteMapC"><span data-i18n="menu.siteMap"></span>
+			<developing></developing>
+			<div class="value">
+				<button data-i18n="menu.open" id="mapOpenB"></button><button data-i18n="menu.close"
+					id="mapCloseB"></button>
+			</div>
+		</div>
+		<div id="newsC"><span data-i18n="menu.news"></span>
+			<developing></developing>
+			<div class="value">
+				<button data-i18n="menu.open" id="newsOpenB"></button><button data-i18n="menu.close"
+					id="newsCloseB"></button>
+			</div>
+		</div>
+		<div id="timeC"><span data-i18n="menu.time"></span>
+			<div class="value">
+				<button data-i18n="menu.open" id="timeOpenB"></button><button data-i18n="menu.close"
+					id="timeCloseB"></button>
+			</div>
+		</div>
+		<div id="weaC"><span data-i18n="menu.wea"></span>
+			<div class="value">
+				<button data-i18n="menu.LTB" id="weaLTB"></button><button data-i18n="menu.RTB"
+					id="weaRTB"></button><button data-i18n="menu.close" id="weaCloseB"></button>
+			</div>
+		</div>
+
+		<div id="lanC"><span data-i18n="menu.lan"></span>
+			<div class="value">
+				<button id="setLanzh_CN" onclick="changeLanguage('zh_CN');">简体</button><button id="setLanzh_TW"
+					onclick="changeLanguage('zh_TW');">繁体</button><button id="setLanen_US"
+					onclick="changeLanguage('en_US');">Eng</button><button id="setLanja_JP"
+					onclick="changeLanguage('ja_JP');">日本語</button>
+			</div>
+		</div>
+		<div id="aboutC" class="pointer" tabindex="0" onkeydown="divClick(this, event)"><span
+				data-i18n="menu.about"></span>
+		</div>
+	</div>
+	<div id="maindiv">
+		<div id="weaContainer">
+			<div id="tp-weather-widget"></div>
+		</div>
+		<div class="forHeader"></div>
+		<div id="searcher">
+			<div class="searchBox" id="searchBox">
+				<form action="javascript:search();">
+					<input id="searchInput" placeholder="Search" tabindex="0" onkeydown="divClick(this, event)"
+						autofocus autocomplete="off" data-i18n="searchInput">
+					<button class="searchButton" id="searchButton" onclick="search();" onchange="searchHelp();"><svg
+							t="1624278681807" class="icon" viewBox="0 0 1024 1024" version="1.1"
+							xmlns="http://www.w3.org/2000/svg" p-id="1226" width="700" height="700">
+							<path
+								d="M400.696889 801.393778A400.668444 400.668444 0 1 1 400.696889 0a400.668444 400.668444 0 0 1 0 801.393778z m0-89.031111a311.637333 311.637333 0 1 0 0-623.331556 311.637333 311.637333 0 0 0 0 623.331556z"
+								p-id="1227"></path>
+							<path d="M667.904 601.998222l314.766222 314.823111-62.919111 62.976-314.823111-314.823111z"
+								p-id="1228"></path>
+						</svg></button>
+				</form>
+				<div id="searchHelper"> </div>
+			</div>
+		</div>
+		<div id="lover">
+			<div id="myLoves"></div>
+		</div>
+		<div class="clickMenu">
+			<div>nm</div>
+			<div>s</div>
+		</div>
+		<div id="mapContainer">
+			<div class="card left">
+				<h2><svg t="1624331718657" class="icon" viewBox="0 0 1024 1024" version="1.1"
+						xmlns="http://www.w3.org/2000/svg" p-id="9282" width="700" height="700">
+						<path
+							d="M974.2336 316.8256c-25.2928-59.6992-61.5424-113.2544-107.52-159.1296-45.9776-46.1824-99.6352-82.5344-159.4368-107.9296C645.3248 23.552 579.6864 10.24 512 10.24c-67.7888 0-133.5296 13.312-195.2768 39.5264-59.8016 25.3952-113.4592 61.6448-159.3344 107.9296-46.08 45.8752-82.2272 99.4304-107.52 159.232C23.552 378.6752 10.24 444.416 10.24 512.1024s13.312 133.4272 39.5264 195.3792c25.2928 59.6992 61.44 113.4592 107.52 159.6416 45.8752 46.08 99.5328 82.2272 159.3344 107.4176C378.368 1000.5504 444.1088 1013.76 512 1013.76c67.7888 0 133.4272-13.2096 195.1744-39.2192 59.904-25.1904 113.5616-61.3376 159.5392-107.4176 46.08-46.1824 82.2272-99.9424 107.52-159.6416C1000.448 645.5296 1013.76 579.7888 1013.76 512.1024c0-67.6864-13.312-133.4272-39.5264-195.2768zM714.5472 849.92l2.4576-4.7104c2.4576-4.7104 5.0176-9.5232 7.4752-14.336 10.6496 5.9392 20.992 12.3904 31.0272 19.2512-19.8656 14.5408-41.2672 27.2384-65.024 38.5024 7.68-11.0592 15.6672-23.8592 24.064-38.7072z m-18.0224-92.672c-1.024-0.4096-2.048-0.8192-2.9696-1.2288-3.9936-1.536-8.0896-3.1744-12.288-4.608-44.544-17.1008-92.3648-27.136-142.1312-29.9008V539.5456h197.632c-2.7648 78.5408-16.5888 153.6-40.2432 217.7024z m-21.0944 49.8688c-1.7408 3.584-3.6864 7.2704-5.5296 10.8544l-3.072 5.8368c-24.7808 45.1584-54.784 79.4624-86.8352 99.2256-13.7216 2.4576-27.3408 4.096-40.7552 4.9152V776.2944c42.7008 2.2528 84.1728 11.0592 123.392 26.112l0.4096 0.1024c4.1984 1.2288 8.192 2.8672 12.3904 4.608zM791.552 484.9664c-2.9696-86.7328-18.7392-170.0864-45.4656-241.3568 18.0224-9.728 35.84-20.992 52.736-33.4848 2.2528 2.048 5.0176 4.608 7.68 7.4752l0.1024 0.1024c71.4752 71.2704 114.4832 165.9904 121.1392 267.1616H791.552zM539.136 248.5248V96.3584c14.6432 1.1264 28.3648 2.6624 40.8576 4.608 32.6656 20.6848 62.6688 55.1936 86.8352 99.84 0.6144 1.2288 1.3312 2.3552 1.9456 3.584 2.2528 4.1984 4.7104 8.4992 6.656 12.9024-4.7104 1.9456-8.8064 3.4816-12.9024 5.0176-40.0384 14.9504-81.5104 23.7568-123.392 26.2144zM696.6272 267.264c23.552 63.7952 37.376 138.8544 40.0384 217.8048h-197.632v-182.272c48.9472-2.4576 96.8704-12.5952 142.4384-29.9008 4.9152-1.7408 9.9328-3.4816 15.1552-5.632z m27.8528-73.5232c-3.3792-6.656-6.7584-13.4144-9.9328-19.3536-7.5776-13.6192-15.5648-26.4192-24.3712-38.912 22.6304 10.752 44.544 23.7568 65.2288 38.7072-8.9088 5.9392-18.7392 12.1856-30.9248 19.5584zM927.744 539.5456c-6.7584 100.9664-49.664 195.6864-121.1392 267.1616l-7.8848 7.68c-16.384-12.3904-33.9968-23.7568-52.6336-33.792 26.8288-71.68 42.496-154.8288 45.4656-241.0496h136.192zM309.4528 174.3872c-3.3792 5.8368-6.7584 12.3904-9.8304 19.2512-11.4688-6.8608-21.7088-13.2096-31.0272-19.456 20.6848-14.9504 42.496-27.9552 65.1264-38.6048-9.8304 13.7216-17.6128 26.112-24.2688 38.8096z m17.6128 92.8768c5.2224 2.1504 10.4448 3.8912 15.5648 5.632h0.1024c44.9536 17.3056 92.7744 27.4432 142.1312 29.9008v182.272H287.0272c2.6624-78.2336 16.4864-153.2928 40.0384-217.8048z m21.504-49.8688c0.512-0.9216 0.9216-1.8432 1.4336-2.7648 2.4576-4.8128 4.7104-9.4208 7.2704-13.824 25.3952-46.08 54.6816-79.6672 86.8352-99.84 12.4928-1.9456 26.2144-3.4816 40.8576-4.608v152.1664c-41.8816-2.4576-83.3536-11.264-123.4944-26.112-4.8128-1.7408-9.0112-3.3792-12.9024-5.0176z m136.2944 558.8992v151.6544c-13.4144-0.8192-27.136-2.56-40.8576-4.9152-31.5392-19.3536-60.8256-52.736-86.8352-99.328-2.6624-4.8128-5.0176-9.6256-7.5776-14.7456-0.3072-0.6144-0.6144-1.2288-0.9216-1.9456 4.8128-2.048 8.8064-3.4816 12.3904-4.5056l0.4096-0.1024c39.2192-15.0528 80.6912-23.8592 123.392-26.112z m-155.3408-19.968c-0.8192 0.3072-1.536 0.6144-2.3552 0.9216-23.6544-64.8192-37.4784-139.8784-40.1408-217.7024h197.8368v181.9648c-50.0736 2.7648-97.8944 12.9024-142.1312 29.9008-4.4032 1.536-8.9088 3.2768-13.2096 4.9152z m-29.9008 74.6496c2.9696 6.2464 6.3488 12.6976 9.8304 18.8416 7.0656 13.2096 15.2576 26.4192 23.9616 38.7072-23.6544-11.264-45.056-23.9616-64.8192-38.4 11.3664-7.68 21.4016-13.824 31.0272-19.1488zM96.256 484.9664c6.7584-101.1712 49.664-195.8912 121.1392-267.1616l0.1024-0.1024c2.3552-2.56 5.0176-5.12 7.4752-7.3728 17.1008 12.3904 34.816 23.6544 52.736 33.3824-26.624 71.5776-42.2912 154.8288-45.2608 241.3568H96.256z m121.1392 321.8432C145.92 735.232 103.0144 640.512 96.256 539.5456h136.192c2.9696 86.016 18.5344 169.1648 45.2608 241.152-18.432 10.0352-36.1472 21.4016-52.6336 33.792l-7.68-7.68z"
+							p-id="9283"></path>
+					</svg>
+					<span data-i18n="map"></span>
+				</h2>
+				<p><br /><span data-i18n="developing"></span></p>
+			</div>
+		</div>
+		<div id="newsContainer">
+			<div class="card right">
+				<h2><svg t="1624331718657" class="icon" viewBox="0 0 1024 1024" version="1.1"
+						xmlns="http://www.w3.org/2000/svg" p-id="9282" width="700" height="700">
+						<path
+							d="M974.2336 316.8256c-25.2928-59.6992-61.5424-113.2544-107.52-159.1296-45.9776-46.1824-99.6352-82.5344-159.4368-107.9296C645.3248 23.552 579.6864 10.24 512 10.24c-67.7888 0-133.5296 13.312-195.2768 39.5264-59.8016 25.3952-113.4592 61.6448-159.3344 107.9296-46.08 45.8752-82.2272 99.4304-107.52 159.232C23.552 378.6752 10.24 444.416 10.24 512.1024s13.312 133.4272 39.5264 195.3792c25.2928 59.6992 61.44 113.4592 107.52 159.6416 45.8752 46.08 99.5328 82.2272 159.3344 107.4176C378.368 1000.5504 444.1088 1013.76 512 1013.76c67.7888 0 133.4272-13.2096 195.1744-39.2192 59.904-25.1904 113.5616-61.3376 159.5392-107.4176 46.08-46.1824 82.2272-99.9424 107.52-159.6416C1000.448 645.5296 1013.76 579.7888 1013.76 512.1024c0-67.6864-13.312-133.4272-39.5264-195.2768zM714.5472 849.92l2.4576-4.7104c2.4576-4.7104 5.0176-9.5232 7.4752-14.336 10.6496 5.9392 20.992 12.3904 31.0272 19.2512-19.8656 14.5408-41.2672 27.2384-65.024 38.5024 7.68-11.0592 15.6672-23.8592 24.064-38.7072z m-18.0224-92.672c-1.024-0.4096-2.048-0.8192-2.9696-1.2288-3.9936-1.536-8.0896-3.1744-12.288-4.608-44.544-17.1008-92.3648-27.136-142.1312-29.9008V539.5456h197.632c-2.7648 78.5408-16.5888 153.6-40.2432 217.7024z m-21.0944 49.8688c-1.7408 3.584-3.6864 7.2704-5.5296 10.8544l-3.072 5.8368c-24.7808 45.1584-54.784 79.4624-86.8352 99.2256-13.7216 2.4576-27.3408 4.096-40.7552 4.9152V776.2944c42.7008 2.2528 84.1728 11.0592 123.392 26.112l0.4096 0.1024c4.1984 1.2288 8.192 2.8672 12.3904 4.608zM791.552 484.9664c-2.9696-86.7328-18.7392-170.0864-45.4656-241.3568 18.0224-9.728 35.84-20.992 52.736-33.4848 2.2528 2.048 5.0176 4.608 7.68 7.4752l0.1024 0.1024c71.4752 71.2704 114.4832 165.9904 121.1392 267.1616H791.552zM539.136 248.5248V96.3584c14.6432 1.1264 28.3648 2.6624 40.8576 4.608 32.6656 20.6848 62.6688 55.1936 86.8352 99.84 0.6144 1.2288 1.3312 2.3552 1.9456 3.584 2.2528 4.1984 4.7104 8.4992 6.656 12.9024-4.7104 1.9456-8.8064 3.4816-12.9024 5.0176-40.0384 14.9504-81.5104 23.7568-123.392 26.2144zM696.6272 267.264c23.552 63.7952 37.376 138.8544 40.0384 217.8048h-197.632v-182.272c48.9472-2.4576 96.8704-12.5952 142.4384-29.9008 4.9152-1.7408 9.9328-3.4816 15.1552-5.632z m27.8528-73.5232c-3.3792-6.656-6.7584-13.4144-9.9328-19.3536-7.5776-13.6192-15.5648-26.4192-24.3712-38.912 22.6304 10.752 44.544 23.7568 65.2288 38.7072-8.9088 5.9392-18.7392 12.1856-30.9248 19.5584zM927.744 539.5456c-6.7584 100.9664-49.664 195.6864-121.1392 267.1616l-7.8848 7.68c-16.384-12.3904-33.9968-23.7568-52.6336-33.792 26.8288-71.68 42.496-154.8288 45.4656-241.0496h136.192zM309.4528 174.3872c-3.3792 5.8368-6.7584 12.3904-9.8304 19.2512-11.4688-6.8608-21.7088-13.2096-31.0272-19.456 20.6848-14.9504 42.496-27.9552 65.1264-38.6048-9.8304 13.7216-17.6128 26.112-24.2688 38.8096z m17.6128 92.8768c5.2224 2.1504 10.4448 3.8912 15.5648 5.632h0.1024c44.9536 17.3056 92.7744 27.4432 142.1312 29.9008v182.272H287.0272c2.6624-78.2336 16.4864-153.2928 40.0384-217.8048z m21.504-49.8688c0.512-0.9216 0.9216-1.8432 1.4336-2.7648 2.4576-4.8128 4.7104-9.4208 7.2704-13.824 25.3952-46.08 54.6816-79.6672 86.8352-99.84 12.4928-1.9456 26.2144-3.4816 40.8576-4.608v152.1664c-41.8816-2.4576-83.3536-11.264-123.4944-26.112-4.8128-1.7408-9.0112-3.3792-12.9024-5.0176z m136.2944 558.8992v151.6544c-13.4144-0.8192-27.136-2.56-40.8576-4.9152-31.5392-19.3536-60.8256-52.736-86.8352-99.328-2.6624-4.8128-5.0176-9.6256-7.5776-14.7456-0.3072-0.6144-0.6144-1.2288-0.9216-1.9456 4.8128-2.048 8.8064-3.4816 12.3904-4.5056l0.4096-0.1024c39.2192-15.0528 80.6912-23.8592 123.392-26.112z m-155.3408-19.968c-0.8192 0.3072-1.536 0.6144-2.3552 0.9216-23.6544-64.8192-37.4784-139.8784-40.1408-217.7024h197.8368v181.9648c-50.0736 2.7648-97.8944 12.9024-142.1312 29.9008-4.4032 1.536-8.9088 3.2768-13.2096 4.9152z m-29.9008 74.6496c2.9696 6.2464 6.3488 12.6976 9.8304 18.8416 7.0656 13.2096 15.2576 26.4192 23.9616 38.7072-23.6544-11.264-45.056-23.9616-64.8192-38.4 11.3664-7.68 21.4016-13.824 31.0272-19.1488zM96.256 484.9664c6.7584-101.1712 49.664-195.8912 121.1392-267.1616l0.1024-0.1024c2.3552-2.56 5.0176-5.12 7.4752-7.3728 17.1008 12.3904 34.816 23.6544 52.736 33.3824-26.624 71.5776-42.2912 154.8288-45.2608 241.3568H96.256z m121.1392 321.8432C145.92 735.232 103.0144 640.512 96.256 539.5456h136.192c2.9696 86.016 18.5344 169.1648 45.2608 241.152-18.432 10.0352-36.1472 21.4016-52.6336 33.792l-7.68-7.68z"
+							p-id="9283"></path>
+					</svg>
+					<span data-i18n="news"></span>
+				</h2>
+				<p><br /><span data-i18n="developing"></span></p>
+			</div>
+		</div>
+	</div>
+	<div id="imgPicker" class="msgBox">
+		<h1 data-i18n="imgPicker.h1"></h1>
+		<div class="main">
+			<p data-i18n="imgPicker.p"></p>
+			<form action="javascript:">
+				<input id="urlInput" placeholder="Image address...">
+				<!-- <script async src="//img.cncn3.cn/sdk/pup.js" data-url="https://img.cncn3.cn/upload"
+					data-auto-insert="direct-links" data-palette="purple" data-sibling="urlInput"
+					data-sibling-pos="before"></script> -->
+		</div>
+		<div class="buttonCon">
+			<button data-i18n="confirm" id="imgSelect"></button>
+		</div>
+		</form>
+	</div>
+	<div id="linkEdit" class="msgBox">
+		<h1 data-i18n="linkEdit.h1"></h1>
+		<div class="main">
+			<p data-i18n="linkEdit.tip"></p>
+			<button data-i18n="daoru" id="inLinks"></button> <button data-i18n="daochu" id="outLinks"></button>
+			<div class="linkEditBlock">
+				<div id="linkEditBlock">
+				</div>
+				<button onclick="addLink()" title="Add" style="float: right;">+</button>
+			</div>
+		</div>
+		<div class="buttonCon">
+			<button data-i18n="confirm" id="saveLinks"></button> <button data-i18n="cancel" id="cancelLinks"></button>
+		</div>
+	</div>
+	<div id="synchronizeBox" class="msgBox">
+		<h1 data-i18n="synchronize.h1"></h1>
+		<div class="main">
+			<p data-i18n="synchronize.nomore"></p>
+			<p>
+				<center data-i18n="synchronize.tip"></center>
+			</p>
+			<!-- <div class="synchronizeList"><p data-i18n="synchronize.fastLinks"></p><div><button data-i18n="menu.open" id="synchronizeFastLinksOpen"></button><button data-i18n="menu.close" id="synchronizeFastLinksClose"></button><button data-i18n="menu.clear" id="synchronizeFastLinksClear"></button></div></div>			 -->
+		</div>
+		<div class="buttonCon">
+			<button data-i18n="confirm" id="closeSynchronizeBox"></button>
+		</div>
+	</div>
+	<div id="aboutBox" class="msgBox">
+		<h1 data-i18n="aboutBox.h1"></h1>
+		<div class="main">
+			<img src="//logos.nmteam.agou.im/nmBrowser/logo@128.png"><br />
+			<p onclick="showDeveloperMenu()">nmBrowser HomePage</p>
+			<p>©2021 nmTeam. All rights reserved. </p>
+			<p><a href="//nmteam.ml?from=nmb_homepage">nmTeam Website</a></p>
+			<p><small>Thanks to the bing photo api api.mfstudio.cc, the quadratic element photo api api.ixiaowai.cn, the
+					weather api by the Xingzhi Weather and i18next for their contributions.</small></p>
+		</div>
+		<div class="buttonCon">
+			<button data-i18n="close" id="aboutClose"></button>
+		</div>
+	</div>
+	<div id="developerMenu" class="msgBox">
+		<h1>Developer Options</h1>
+		<div class="main">
+			<button onclick="getInfo(function(){alert(returnWord+data)});">Request User Info JSON</button><br />
+			<button onclick="localStorage.setItem('showDevBut',true)">Always show developers' Button</button>
+			<button onclick="localStorage.setItem('showDevBut',false)">Reset this setting</button><br />
+			<button onclick="localStorage.clear();">Clear All Personalizations</button><br />
+			<button
+				onclick='localStorage.setItem("fastLinks", "{\"0\":{\"name\":\"nmTeam\",\"add\":\"https:\/\/nmteam.ml?from=nmbstart\",\"img\":\"https:\/\/logos.nmteam.agou.im/nmTeam/logo@64.png\"},\"1\":{\"name\":\"Sakura Frp\",\"add\":\"https:\/\/natfrp.com\",\"img\":\"\"},\"2\":{\"name\":\"Yuina的图床\",\"add\":\"https:\/\/img.cncn3.cn?from=nmbstart\",\"img\":\"\"},\"3\":{\"name\":\"Bilibili\",\"add\":\"https:\/\/bilibili.com\",\"img\":\"\"},\"4\":{\"name\":\"Pornhub\",\"add\":\"https:\/\/pornhub.com\",\"img\":\"\"},\"5\":{\"name\":\"XYZ1024 Blog\",\"add\":\"https:\/\/xyz1024.top?from=nmbstart\",\"img\":\"\"},\"6\":{\"name\":\"NoyAcg\",\"add\":\"https:\/\/noy.asia?from=nmbstart\",\"img\":\"\"},\"7\":{\"name\":\"Twitter\",\"add\":\"https:\/\/twitter.com\",\"img\":\"\"}}");'>Import
+				Test Fastlinks</button><br />
+			<p>Error Checker<button onclick="errorChecker();">Run</button></p>
+			<textarea style="width:48%;height:15em;" id="errorCheckInputBox" placeholder="Javascript to run"></textarea>
+			<textarea style="width:48%;height:15em;" id="errorCheckResultBox" placeholder="Result"
+				readonly=""></textarea>
+		</div>
+		<div class="buttonCon">
+			<button data-i18n="close" onclick="hideDeveloperMenu()"></button>
+		</div>
+	</div>
+	<svg id="developerButton" onclick='developerMenu.setAttribute("open", "true");' viewBox="0 0 1025 1024"
+		version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="6154" width="30" height="30">
+		<path
+			d="M649.179 512q0-60.562-42.862-103.424t-103.424-42.862-103.424 42.862T356.607 512t42.862 103.424 103.424 42.862 103.424-42.862T649.179 512z m292.571-62.281v126.866q0 6.839-4.571 13.129t-11.447 7.424l-105.728 16.018q-10.862 30.866-22.272 52.005 20.005 28.562 61.147 78.848 5.705 6.839 5.705 14.299t-5.157 13.129q-15.433 21.138-56.576 61.696t-53.723 40.558q-6.839 0-14.848-5.157l-78.848-61.696q-25.161 13.129-52.005 21.723-9.143 77.714-16.567 106.277-3.986 16.018-20.553 16.018H439.441q-8.009 0-14.007-4.864t-6.583-12.288l-16.018-105.143q-28.014-9.143-51.419-21.138l-80.567 61.147q-5.705 5.157-14.299 5.157-8.009 0-14.299-6.29-72.009-65.134-94.281-96-3.986-5.705-3.986-13.129 0-6.839 4.571-13.129 8.558-11.995 29.147-37.998t30.866-40.302q-15.433-28.562-23.442-56.576L80.566 594.87q-7.424-1.134-11.995-7.131T64 574.317V447.451q0-6.839 4.571-13.129t10.862-7.424L185.71 410.88q8.009-26.295 22.272-52.553-22.857-32.585-61.147-78.848-5.705-6.839-5.705-13.714 0-5.705 5.157-13.129 14.848-20.553 56.283-61.44t54.016-40.85q7.424 0 14.848 5.705l78.848 61.147q25.161-13.129 52.005-21.723 9.143-77.714 16.567-106.277 3.986-15.982 20.553-15.982h126.866q8.009 0 14.007 4.864t6.583 12.288l16.018 105.143q28.014 9.143 51.419 21.138l81.152-61.147q5.157-5.157 13.714-5.157 7.424 0 14.299 5.705 73.728 67.986 94.281 97.134 3.986 4.571 3.986 12.581 0 6.839-4.571 13.129-8.558 11.995-29.147 37.998t-30.866 40.302q14.848 28.562 23.442 55.991l104.558 16.018q7.424 1.134 11.995 7.131t4.571 13.422z"
+			p-id="6155" fill="#bfbfbf"></path>
+	</svg>
+	<textarea style="position: fixed;left: 0;right: 100%;top: 0;bottom: 100%;z-index: -999999999999999;opacity: 0;"
+		id="copyTextBox" readonly=""></textarea>
+
+</body>
+<script src="/src/js/jquery.min.js"></script>
+<script src="/src/js/i18next-1.6.3.min.js"></script>
+<script src="https://accounts.nmteam.ml/src/js/getinfo.js"></script>
+<script src="/src/js/index.js"></script>
+<script src="/src/js/language.js"></script>
+
+</html>
