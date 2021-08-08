@@ -51,6 +51,7 @@ body.dark{
     --searchword: #ffffff;
     --input: #ffffff;
     --searchtip: #bbbbbb;
+    color: #fff;
 }
 body:not(.dark)[halfDark=true], body[firstTime=true]{
     --time: #000000;
@@ -658,7 +659,7 @@ body[firstTime=true] #openHeaderMenuButton{
     position: fixed;
     width: 230px;
     height: 160px;
-    transform: translate(-109px, 69px);
+    transform: translate(0%, 90%);
     z-index: 66668;
 }
 @media (max-width: 700px) {

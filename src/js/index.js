@@ -1,5 +1,5 @@
 logURL = "https://accounts.nmteam.ml";
-apiURL = "https://api-nmteam.agou.im";
+apiURL = "https://logapi.nmteam.ml";
 thisIsEnglish = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?<>-=+_:;'`\"\\[]{}()*&^%$#@!~ ";
 thisIsNumber = "1234567890";
 transHeadA = "https://translate.google.cn/?sl=auto&tl=auto&text=";
@@ -767,7 +767,8 @@ function fastMenu(id) {
     toBottom = window.innerHeight - mouseY + 160;
     menu.style.bottom = toBottom + "px";
     toLeft = mouseX;
-    if (toLeft > 290)
+    console.log(document.getElementsByTagName("body")[0].offsetWidth - toLeft);
+    if (document.getElementsByTagName("body")[0].offsetWidth - toLeft < 290)
         toLeft -= 230;
     menu.style.left = toLeft + "px";
     menu.style.zIndex = "66668";
@@ -852,8 +853,8 @@ function fix(num) {
 }
 
 window.onmousemove = function (event) {
-    mouseX = event.screenX;
-    mouseY = event.screenY;
+    mouseX = event.pageX;
+    mouseY = event.pageY;
 };
 
 // 登录账户
