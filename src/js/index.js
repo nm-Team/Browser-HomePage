@@ -680,9 +680,11 @@ linkManageB.onclick = function () {
     }
 }
 function delLink(id) {
+    setInputValueAttribute();
     document.getElementById("link" + id).outerHTML = "";
 }
 function addLink() {
+    setInputValueAttribute();
     if (linkEditBlock.getElementsByClassName("singleLink").length >= 8) {
         return alert("You have already created 8 links. ");
     }
@@ -691,6 +693,7 @@ function addLink() {
     linkEditBlock.innerHTML = linkFC + `<div class="singleLink" id="link` + linkCache + `"><input name="name" placeholder="Friendly Name"> <input name="address" placeholder="Address"> <input name="img" placeholder="Image" style="display: none"> <button onclick="upLink(` + linkCache + `)" title="Up">↑</button> <button onclick="downLink(` + linkCache + `)" title="Down">↓</button><button onclick="delLink(` + linkCache + `)" title="Delete">×</button></div>`;
 }
 function upLink(id) {
+    setInputValueAttribute();
     linkPlace = whereIsLink(id);
     if (linkPlace == 0 || linkPlace == -1)
         return -1;
@@ -699,6 +702,7 @@ function upLink(id) {
     linkEditBlock.getElementsByClassName("singleLink")[linkPlace - 1].outerHTML = placeHTMLCache + linkEditBlock.getElementsByClassName("singleLink")[linkPlace - 1].outerHTML;
 }
 function downLink(id) {
+    setInputValueAttribute();
     linkPlace = whereIsLink(id);
     if (linkPlace == linkEditBlock.getElementsByClassName("singleLink").length || linkPlace == -1)
         return -1;
@@ -755,6 +759,13 @@ closeSynchronizeBox.onclick = function () {
     synchronizeBox.setAttribute("open", "false");
     msgBoxCover.className = "";
 }
+
+function setInputValueAttribute() {
+    for (setInputValueAttributeCache = 0; setInputValueAttributeCache < linkEditBlock.getElementsByTagName("input").length; setInputValueAttributeCache++) {
+        linkEditBlock.getElementsByTagName("input")[setInputValueAttributeCache].setAttribute("value", linkEditBlock.getElementsByTagName("input")[setInputValueAttributeCache].value);
+    }
+}
+
 // 右键快速链接的菜单
 function fastMenu(id) {
     new_element = document.createElement('div');
