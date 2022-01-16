@@ -1,4 +1,4 @@
-logURL = "https://accounts.nmteam.ml";
+logURL = "https://accounts.nmteam.xyz";
 apiURL = "https://logapi.nmteam.ml";
 thisIsEnglish = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789,./?<>-=+_:;'`\"\\[]{}()*&^%$#@!~ ";
 thisIsNumber = "1234567890";
@@ -41,6 +41,7 @@ if (localStorage.getItem("started") == null) {
     setWea();
 }
 
+
 startUsing.onclick = function () {
     localStorage.setItem("started", "true");
     loadingCover.setAttribute("hidden", "true");
@@ -51,6 +52,12 @@ startUsing.onclick = function () {
 
 // Header 动画
 maindiv.onscroll = function () {
+    updateBodyVis();
+}
+
+updateBodyVis();
+
+function updateBodyVis() {
     if (maindiv.scrollTop < 90) {
         scrollPercent = 1 - (90 - maindiv.scrollTop) / 180;
         headerlogotexth.setAttribute("hidden", "true");
@@ -266,6 +273,7 @@ function openHeaderMenu() {
     headerClickMenu = document.getElementById("headerClickMenu");
     if (headerClickMenu.getAttribute("open") == "true") {
         headerClickMenu.setAttribute("open", "false");
+        noSuchCover.className = "";
     } else {
         headerClickMenu.setAttribute("open", "true");
         noSuchCover.className = "opened";
@@ -579,7 +587,7 @@ function setBgImg(openBox = false) {
     toSet = localStorage.getItem("bgImage");
     if (toSet == "bing") {
         imgBingB.className = "on";
-        imgOri = "https://api.mfstudio.cc/bing/";
+        imgOri = "https://api.xygeng.cn/Bing/";
     }
     if (toSet == "2cy") {
         img2cyB.className = "on";
@@ -775,13 +783,9 @@ function fastMenu(id) {
     new_element.setAttribute('linkId', id);
     document.body.appendChild(new_element);
     menu = document.getElementById('fastMenu' + id);
-    toBottom = window.innerHeight - mouseY + 160;
-    menu.style.bottom = toBottom + "px";
-    toLeft = mouseX;
-    console.log(document.getElementsByTagName("body")[0].offsetWidth - toLeft);
-    if (document.getElementsByTagName("body")[0].offsetWidth - toLeft < 290)
-        toLeft -= 230;
-    menu.style.left = toLeft + "px";
+    menu.style.top = "50vh";
+    menu.style.left = "50vw";
+    menu.style.transform = "translate(-50%,-50%)";
     menu.style.zIndex = "66668";
     links = JSON.parse(localStorage.getItem("fastLinks"));
     editingLink = links[id];
@@ -789,10 +793,12 @@ function fastMenu(id) {
     <div><input placeholder="Name" value="`+ editingLink.name + `"></div>
     <div><input placeholder="Address"value="`+ editingLink.add + `"></div>
     <div><input placeholder="Logo URL"value="`+ editingLink.img + `"></div>
-    <div class="delete" data-i18n="delete" onclick="deleteLinkInPage(`+ id + `)">删除</div>`
-        ;
+    <div class="delete" data-i18n="delete" onclick="deleteLinkInPage(`+ id + `)" tabindex="0" onkeydown="divClick(this, event)"></div>`;
     noSuchCover.className = "opened";
+    changeLanguage();
+    document.getElementById('fastMenu' + id).getElementsByTagName("input")[0].focus();
 }
+
 function deleteLinkInPage(id) {
     id = document.getElementsByClassName("fastMenu")[0].getAttribute("linkId");
     links = JSON.parse(localStorage.getItem("fastLinks"));
@@ -953,6 +959,7 @@ function loadc(name) {
     });
     return toReturn;
 }
+
 // 工程菜单
 function showDeveloperMenu() {
     try { showDeveloperMenuNum++; }
