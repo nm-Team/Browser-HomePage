@@ -306,7 +306,7 @@ body.darkfirstTime #header logotext#headerlogotexth, body.dark[firstTime=true] #
     max-width: 80%;
     max-height: 80vh;
     animation: clickMenu 0.2s;
-    transition: opacity 0.1s 0.05s,visibility 0s 0.3s,width 0.2s;
+    transition: opacity 0.1s,visibility 0s 0.1s,width 0.2s;
     overflow: auto;
 }
 @keyframes clickMenu {
@@ -321,7 +321,7 @@ body.darkfirstTime #header logotext#headerlogotexth, body.dark[firstTime=true] #
 .clickMenu[open=true]{
     opacity: 1;
     visibility: visible;
-    transition: opacity 0.2s 0.05s;
+    transition: opacity 0.1s;
 }
 .clickMenu#headerClickMenu[firstTime=true]{
     box-shadow: none;
@@ -954,7 +954,7 @@ body[transition=true] #bodybg{
     transition: all 0.5s;
 }
 body[transition=true] .clickMenu[open=true]{
-    transition: color 0.5s, background-color 0.5s, opacity 0.2s 0.05s;
+    transition: color 0.5s, background-color 0.5s, opacity 0.1s;
 }
 body[transition=true] #headerClickMenu div .value button, body[transition=true] .sw-bar-bubble-location,body[transition=true] .sw-bar-bubble-temperature,body[transition=true] .myLove p{
     transition: color 0.5s;
