@@ -34,7 +34,7 @@ function changeLanguage(lang) {
             $('html').i18n();
         }
     );
-    if (language != "zh_CN" & language != "zh_TW")
+    if (language != "zh_CN" & language != "zh_HK")
         //加宽设置
         headerClickMenu.className = " clickMenu widden";
     else headerClickMenu.className = " clickMenu ";

@@ -10,13 +10,16 @@
 	"cancel": "Cancel",
 	"close": "Close",
 	"confirm": "Confirm",
+	"copied": "Copied to clipboard.",
 	"daochu": "Export",
 	"daoru": "Import",
 	"delete": "Delete",
 	"developing": "This feature is still under development, so stay tuned.",
 	"imgPicker": {
-		"h1": "Custom Photo",
-		"p": "Enter the picture address:"
+		"empty": "Please upload the background photo or fill the link of the photo.",
+		"h1": "Custom Background Image",
+		"fromFile": "Click below to upload from file: ",
+		"p": "Or directly provide the link of photo: "
 	},
 	"linkEdit": {
 		"h1": "Edit Fast Links",

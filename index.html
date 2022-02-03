@@ -101,15 +101,14 @@
 					id="img2cyB"></button><button data-i18n="menu.selfImg" id="imgZdyB"></button>
 			</div>
 		</div>
-
-		<div id="siteMapC"><span data-i18n="menu.siteMap"></span>
+		<div id="siteMapC" style="display: none;"><span data-i18n="menu.siteMap"></span>
 			<developing></developing>
 			<div class="value">
 				<button data-i18n="menu.open" id="mapOpenB"></button><button data-i18n="menu.close"
 					id="mapCloseB"></button>
 			</div>
 		</div>
-		<div id="newsC"><span data-i18n="menu.news"></span>
+		<div id="newsC" style="display: none;"><span data-i18n="menu.news"></span>
 			<developing></developing>
 			<div class="value">
 				<button data-i18n="menu.open" id="newsOpenB"></button><button data-i18n="menu.close"
@@ -131,8 +130,8 @@
 
 		<div id="lanC"><span data-i18n="menu.lan"></span>
 			<div class="value">
-				<button id="setLanzh_CN" onclick="changeLanguage('zh_CN');">简体</button><button id="setLanzh_TW"
-					onclick="changeLanguage('zh_TW');">繁体</button><button id="setLanen_US"
+				<button id="setLanzh_CN" onclick="changeLanguage('zh_CN');">简体</button><button id="setLanzh_HK"
+					onclick="changeLanguage('zh_HK');">繁体</button><button id="setLanen_US"
 					onclick="changeLanguage('en_US');">Eng</button><button id="setLanja_JP"
 					onclick="changeLanguage('ja_JP');">日本語</button>
 			</div>
@@ -149,8 +148,8 @@
 		<div id="searcher">
 			<div class="searchBox" id="searchBox">
 				<form action="javascript:search();">
-					<input id="searchInput" tabindex="0" onkeydown="divClick(this, event)"
-						autofocus autocomplete="off" data-i18n="searchInput">
+					<input id="searchInput" tabindex="0" onkeydown="divClick(this, event)" autofocus autocomplete="off"
+						data-i18n="searchInput">
 					<button class="searchButton" id="searchButton" onclick="search();" onchange="searchHelp();"><svg
 							t="1624278681807" class="icon" viewBox="0 0 1024 1024" version="1.1"
 							xmlns="http://www.w3.org/2000/svg" p-id="1226" width="700" height="700">
@@ -167,7 +166,7 @@
 		<div id="lover">
 			<div id="myLoves"></div>
 		</div>
-		<div id="mapContainer">
+		<div id="mapContainer" style="display: none;">
 			<div class="card left">
 				<h2><svg t="1624331718657" class="icon" viewBox="0 0 1024 1024" version="1.1"
 						xmlns="http://www.w3.org/2000/svg" p-id="9282" width="700" height="700">
@@ -180,7 +179,7 @@
 				<p><br /><span data-i18n="developing"></span></p>
 			</div>
 		</div>
-		<div id="newsContainer">
+		<div id="newsContainer" style="display: none;">
 			<div class="card right">
 				<h2><svg t="1624331718657" class="icon" viewBox="0 0 1024 1024" version="1.1"
 						xmlns="http://www.w3.org/2000/svg" p-id="9282" width="700" height="700">
@@ -197,17 +196,18 @@
 	<div id="imgPicker" class="msgBox">
 		<h1 data-i18n="imgPicker.h1"></h1>
 		<div class="main">
+			<p data-i18n="imgPicker.fromFile"></p>
+					<input id="imgUploadInput" type="file" title="Upload Custom Image" accept="image/*" onchange="customBgImageBase64(this)">
+
 			<p data-i18n="imgPicker.p"></p>
 			<form action="javascript:">
-				<input id="urlInput" placeholder="Image address...">
-				<!-- <script async src="//img.cncn3.cn/sdk/pup.js" data-url="https://img.cncn3.cn/upload"
-					data-auto-insert="direct-links" data-palette="purple" data-sibling="urlInput"
-					data-sibling-pos="before"></script> -->
+				<input id="urlInput" placeholder="https://">
 		</div>
 		<div class="buttonCon">
 			<button data-i18n="confirm" id="imgSelect"></button>
+			</form>
+			<button data-i18n="cancel" id="imgSelectCancel"></button>
 		</div>
-		</form>
 	</div>
 	<div id="linkEdit" class="msgBox">
 		<h1 data-i18n="linkEdit.h1"></h1>

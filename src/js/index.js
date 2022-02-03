@@ -583,26 +583,30 @@ function setTime() {
 }
 setBgImg();
 function setBgImg(openBox = false) {
-    resetButton("bgImageOriC");
     toSet = localStorage.getItem("bgImage");
     if (toSet == "bing") {
+        resetButton("bgImageOriC");
         imgBingB.className = "on";
         imgOri = "https://api.xygeng.cn/Bing/";
     }
     if (toSet == "2cy") {
+        resetButton("bgImageOriC");
         img2cyB.className = "on";
         imgOri = "https://api.ixiaowai.cn/api/api.php";
     }
     if (toSet == "zdy") {
-        imgZdyB.className = "on";
-        imgOri = localStorage.getItem("imgZdyLink");
-        if (imgOri == undefined || openBox == true) {
+        imgOri = localStorage.imgZdyLink;
+        if (!imgOri || openBox == true) {
             console.warn("Set photo");
             // alert("This feature will come soon.");
             //对话框
             imgPicker.setAttribute("open", "true");
             msgBoxCover.className = "open";
             urlInput.value = imgOri;
+            return;
+        }
+        else {
+            imgZdyB.className = "on";
         }
     }
     if (localStorage.getItem("bg") == "true")
@@ -611,13 +615,39 @@ function setBgImg(openBox = false) {
 }
 imgSelect.onclick = function () {
     if (urlInput.value) {
+        resetButton("bgImageOriC");
         localStorage.setItem("imgZdyLink", urlInput.value);
+        imgZdyB.className = "on";
+        localStorage.bgImage = "zdy";
+        imgOri = localStorage.getItem("imgZdyLink");
         imgPicker.setAttribute("open", "false");
         msgBoxCover.className = "";
+        setBgImg();
     }
     else {
         console.error("没有提供图片地址");
-        alert("Please fill the blank.");
+        alert(i18n.t("imgPicker.empty"));
+    }
+}
+imgSelectCancel.onclick = function () {
+    imgPicker.setAttribute("open", "false");
+    msgBoxCover.className = "";
+}
+
+// 插入文件
+function customBgImageBase64(fileInput) {
+    console.log("Get files from fileInput " + fileInput.id);
+    //把选择的图片解码填入框中
+    fileOperated = 0;
+    file = fileInput.files[fileOperated];
+    fileName = fileInput.files[fileOperated].name;
+    fileSize = fileInput.files[fileOperated].size;
+    console.log(fileInput.files[fileOperated]);
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function (e) {
+        console.log(this.result);
+        urlInput.value = this.result;
     }
 }
 setBg();
@@ -729,7 +759,7 @@ function whereIsLink(id) {
 outLinks.onclick = function () {
     saveLinks.click();
     copy(localStorage.getItem("fastLinks"));
-    alert("Copied. ");
+    alert(i18n.t("copied"));
 }
 inLinks.onclick = function () {
     inLinksStr = prompt("Paste the item to import: ", "");
