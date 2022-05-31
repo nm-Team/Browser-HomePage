@@ -587,7 +587,7 @@ function setBgImg(openBox = false) {
     if (toSet == "bing") {
         resetButton("bgImageOriC");
         imgBingB.className = "on";
-        imgOri = "https://api.xygeng.cn/Bing/";
+        imgOri = "https://bs.nmteam.xyz/bingphoto";
     }
     if (toSet == "2cy") {
         resetButton("bgImageOriC");
